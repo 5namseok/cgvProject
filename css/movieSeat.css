@@ -1,0 +1,101 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* COUNT CSS */
+.Count{
+  width: 320px;
+  margin-bottom: 20px;
+}
+.Count span{
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.Count>div{
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 0;  
+}
+.Count label{
+  display: block;
+  width: 60px;
+  text-align: center;
+}
+.Count input{
+  left: 100px;
+}
+
+
+
+/* TABLE CSS */
+.seatTitle{
+  width: 320px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.seat{
+  border : 1px solid black;
+}
+
+table{
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+}
+
+th{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border : 1px solid red;
+  margin: 0;
+  width: 300px;
+  margin-bottom: 30px;
+}
+
+tr{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+td{
+  border : 1px solid black;
+  width: 50px;
+  transition: .3s;
+}
+td.null{
+  background-color: bisque;
+  cursor: pointer;
+}
+td.target{
+  background-color: red;
+}
+
+
+/* btn */
+
+.btn_con{
+  display: flex;
+  justify-content: end;
+  margin-top: 30px;
+  margin-right: 50px;
+}
+
+.pageMoveBtn{
+  margin: 10px 20px 0 0;
+  border : 2px solid ;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+.btn_con a{
+  text-decoration: none;
+  width: 80px;
+  text-align: center;
+}
