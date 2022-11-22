@@ -39,6 +39,7 @@
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
+  <title>영화의 시작 CGV</title>
 </head>
 
 <body>
@@ -59,6 +60,28 @@
           </div>
         </div>
         <div class="mem_info">
+          <c:choose>
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="mem_join">
+                <a href="${contextPath}/member/join.do">
+                  <i class='bx bx-user-plus'></i>
+                  <p>회원가입</p> <!--  -->
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="mem_join">
+                <%
+                  Object ID_get=session.getAttribute("id");
+                %>
+                <a href="#">
+                  <p><%=ID_get %>님<br> 환영합니다</p>
+                </a>
+              </div>
+
+            </c:otherwise>
+          </c:choose>
+
           <div class="login_info">
             <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
             <c:choose>
@@ -80,21 +103,10 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-          
-            <c:choose>
-              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
-              <div class="mem_join">
-                <a href="${contextPath}/member/join.do">
-                  <i class='bx bx-user-plus'></i>
-                  <p>회원가입</p> <!--  -->
-                </a>
-                </div>
-              </c:when>
-              <c:otherwise>
-              </c:otherwise>
-            </c:choose>
 
-          
+
+
+
           <div class="myCGV">
             <a href="#">
               <i class='bx bx-user'></i>
@@ -209,8 +221,10 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <a href="./NoticeList.jsp">공지사항페이지</a>
-      <img src="./img/001.jpg" alt="123">
+      <a href="${contextPath}/NoticeListCon.do">공지사항페이지</a><br>
+      <a href="${contextPath}/QNAListController.do">QNA게시판</a>
+
+      <img src="${contextPath}/img/001.jpg" alt="123">
     </div>
   </div>
 

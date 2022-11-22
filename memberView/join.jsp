@@ -14,7 +14,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회원가입</title>
   <!-- CSS LINK -->
-  <link rel="stylesheet" href="../css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -38,8 +38,8 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="../js/common.js" defer></script>
-  <script src="../js/members.js" defer></script>
+  <script src="${contextPath}/js/common.js" defer></script>
+  <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   
   <!-- contextPath 저장 -->
@@ -55,9 +55,9 @@
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <a href="${contextPath}/member/main.do">
-	            <img src="${pageContext.request.contextPath}/image/logoRed.png" alt="CGV" class="logo logo_red">
-	            <img src="${pageContext.request.contextPath}/image/logoWhite.png" alt="CGV" class="logo logo_white">
+            <a href="${contextPath}/">
+              <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+              <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
             </a>
           </div>
           <div class="logo_text">
@@ -65,56 +65,68 @@
           </div>
         </div>
         <div class="mem_info">
-          <div class="login_info">
-          
-          <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
           <c:choose>
-	 		<c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
-	 			<div class="login">
-	 			  <a href="${contextPath}/member/login.do">
-	                <i class='bx bx-log-in-circle'></i>
-	                <p>로그인</p>
-	              </a>
-	            </div>
-	 		</c:when>
-		 	<c:otherwise>
-			 	<div class="logout hidden">
-			 	  <a href="${contextPath}/member/logout.do">
-		            <i class='bx bx-log-out-circle'></i>
-		            <p>로그아웃</p>
-	              </a>
-	            </div>
-	 		</c:otherwise>
- 		  </c:choose> 
- 		  
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="mem_join">
+                <a href="${contextPath}/member/join.do">
+                  <i class='bx bx-user-plus'></i>
+                  <p>회원가입</p> <!--  -->
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="mem_join">
+                <%
+                  Object ID_get=session.getAttribute("id");
+                %>
+                <a href="#">
+                  <p><%=ID_get %>님<br> 환영합니다</p>
+                </a>
+              </div>
+
+            </c:otherwise>
+          </c:choose>
+
+          <div class="login_info">
+            <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <div class="login">
+                  <a href="${contextPath}/member/login.do">
+                    <i class='bx bx-log-in-circle'></i>
+                    <p>로그인</p>
+                  </a>
+                </div>
+              </c:when>
+              <c:otherwise>
+                <div class="logout">
+                  <a href="${contextPath}/member/logout.do">
+                    <i class='bx bx-log-out-circle'></i>
+                    <p>로그아웃</p>
+                  </a>
+                </div>
+              </c:otherwise>
+            </c:choose>
           </div> <!--  //div class="login_info" -->
-          <div class="mem_join">
-            <a href="${contextPath}/member/join.do">
-          	  <i class='bx bx-user-plus'></i>
-              <p>회원가입</p> <!--  -->
+
+
+
+
+          <div class="myCGV">
+            <a href="#">
+              <i class='bx bx-user'></i>
+              <p>MY CGV</p>
             </a>
           </div>
-          <div class="myCGV">
-            <c:choose>
- 		  	  <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
- 		  	  	<a href="${contextPath}/member/login.do">
- 		  	  </c:when>
- 		  	  <c:otherwise>
- 		  	  	<a href="${contextPath}/member/memberPage.do">
- 		  	  </c:otherwise>
- 		  	</c:choose>
-                <i class='bx bx-user'></i>
-                <p>MY CGV</p>
-              </a>
-          </div>
           <div class="QNA">
-            <i class='bx bx-support'></i>
-            <p>고객센터</p>
+            <a href="${contextPath}/NoticeListCon.do">
+              <i class='bx bx-support'></i>
+              <p>고객센터</p>
+            </a>
           </div>
-        </div> <!-- //div class="mem_info" -->
-      </div> <!-- //div class="top_area" -->
-
-    </div> <!-- //div class="inner" -->
+        </div>
+      </div>
+    </div>
 
     <!-- MENU & SEARCH 영역 -->
     <div class="menu_area">
@@ -126,7 +138,7 @@
               <li>
                 <h3>영화</h3>
               </li>
-              <li><a href="#">무비차트</a></li>
+              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
               <li><a href="#">아트하우스</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
@@ -149,7 +161,7 @@
               <li>
                 <h3>예매</h3>
               </li>
-              <li><a href="#">빠른예매</a></li>
+              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
               <li><a href="#">상영스케줄</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
@@ -203,8 +215,8 @@
         </ul>
 
         <div class="search_menu">
-            <input type="text" name="search_bar" id="search_bar">
-            <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
+          <input type="text" name="search_bar" id="search_bar">
+          <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
         </div>
       </div>
       <div class="menu_bg"></div>

@@ -44,7 +44,7 @@ function autoHyphen(target) {
 
 //메인으로 가기
 function backToMain(obj) {
-  obj.action = contextPath + "/member/main.do";
+  obj.action = contextPath + "/member/"; //main.do
   obj.submit();
 }
 

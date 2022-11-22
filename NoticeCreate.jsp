@@ -183,7 +183,7 @@
 			<table	width ="600" border = "1" bordercolor = "gray">
 				<tr height="40">
 						<td align = "center" width ="150">작성자</td>
-						<td width="450" ><input type="text" name = "id" value="${sId}"/></td>
+						<td width="450" ><input type="text" name = "id" value="${sId}" readonly="readonly"/></td>
 				</tr>
 				
 				<tr height="40">
