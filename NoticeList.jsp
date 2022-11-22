@@ -222,13 +222,17 @@
 			<td colspan="5" align="right">
 				<%
 					Object ID_get=session.getAttribute("id");
-          String ID_getdata=(String)ID_get;
-					if(ID_getdata.equals("admin") || ID_getdata=="damin"){
-						out.print("<button >글쓰기</button>");
-						out.print("<input type='hidden' name='name' id='name' value='"+ID_getdata+"'>");
-					} else{
-						out.print("<p>관리자만 글을 작성할 수 있습니다.</p>");
-					}
+          			String ID_getdata=(String)ID_get;
+          			if(ID_getdata !=null){
+          				if(ID_getdata.equals("admin") || ID_getdata=="damin"){
+    						out.print("<button >글쓰기</button>");
+    						out.print("<input type='hidden' name='name' id='name' value='"+ID_getdata+"'>");
+    					} else{
+    						out.print("<p>관리자만 글을 작성할 수 있습니다.</p>");
+    					}
+          			} else {
+          				out.print("<p>관리자만 글을 작성할 수 있습니다.</p>");
+          			}
 				%>
 				<script type="text/javascript">
 					let create_Btn=document.querySelector('button');
