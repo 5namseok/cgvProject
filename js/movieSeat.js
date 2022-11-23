@@ -28,14 +28,12 @@ seat_btn.addEventListener('click',()=>{
   console.log('좌석 선택 수='+target);
   if(totalCount==target){
     let seat_target=table.querySelectorAll('.target');
-    let seatNum_text='[';
+    let seatNum_text='';
     seat_target.forEach((s)=>{
-      seatNum_text+=s.innerText +','
+      seatNum_text+=s.innerText+',';
     })
-    seatNum_text+=']';
     seatnum_hi.value=seatNum_text;
     booknum_hi.value=Date.now();
-  
     document.querySelector('form').submit();
   } else {
     alert('인원수와 좌석 수가 맞지 않습니다.')

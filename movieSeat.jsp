@@ -11,37 +11,45 @@
 	String showingDate = request.getParameter("showingDate");
 	String showingTime = request.getParameter("showingTime");
 	String seatNum = request.getParameter("seatNum");
-	/*System.out.println(mvTitle); 
-	System.out.println(theater); 
-	System.out.println(showingDate); 
-	System.out.println(showingTime);
-	System.out.println(seatNum);*/
 %>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript">
-<!--
-	function fn_seat() {
-		var flag = false;
-		var seatNum = document.getElemntsByNames("seatNum");
-			System.out.println(seatNum.length);
-		for(var i =0; i<seatNum.length; i++){
-			if(seatNum[i].checked){
-				System.out.println(seatNum[i].value);
+<script type="text/javascript" defer>
+window.onload = function(){
+	let list = new Array();
+
+	<c:forEach var="seat" items="${seatInfo}" > //배열에 seatNum 배열값 추가하기
+		list.push("${seat.seatNum}"); 
+	</c:forEach>
+	let str = list.toString(); // 추가된 seatNum 배열을 합쳐 문자값으로 변환
+	console.log(str);
+
+	let checkSeat = str.split(','); // seatNum 배열을 ,로 구분하여 셋팅
+	let tbs = document.querySelectorAll('td'); 
+
+	console.log(checkSeat.length);
+  for(i=0; i<checkSeat.length; i++){
+    console.log(checkSeat[i])
+  }
+
+	for(let i=0; i<checkSeat.length; i++){ //예매된 좌석번호
+		for(let j=0; j<tbs.length; j++){ //전체 좌석번호
+			if(tbs[j].innerText == checkSeat[i]){ //전체 좌석번호와 예매된 좌석번호 가 맞을시 해당 좌석번호의 클래스 select로 변경
+				tbs[j].className='select';
+				console.log("예매된 좌석"+checkSeat[i]+"전체좌석"+tbs[j]+"맞음");
+			}else {
+				console.log("예매된 좌석"+checkSeat[i]+"전체좌석"+tbs[j]+"틀림");
 			}
 		}
-		return flag;
-	}
-	
-
--->
-
+	}	
+}	
 </script>
 <meta charset="UTF-8">
 <title>예매하기</title>
+<script type="text/javascript" src="${contextPath}/js/jquery-3.6.0.min.js"></script>
   <link rel="stylesheet" href="${contextPath}/css/common2.css">
   <link rel="stylesheet" href="${contextPath}/css/movieSeat.css">
 
@@ -103,7 +111,7 @@
       </div>
 
       <div class="seatTitle">
-        좌석선택
+        좌석선택  
       </div>
       
       <table class="seat">

@@ -76,7 +76,6 @@ function fn_ticket() {
 	        <span class="">영화선택</span>
 	        <ul>
 	          <li><a href="#">${mvInfoList[0].mvTitle}</a></li>
-	          <li><a href="#">${mvInfoList[4].mvTitle}</a></li>
 	        </ul>
 	      </div>
 	      

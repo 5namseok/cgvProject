@@ -10,8 +10,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  <link rel="stylesheet" href="${contextPath}/teamproject/css/common2.css">
-  <link rel="stylesheet" href="${contextPath}/teamproject/css/ticket.css">
+  <link rel="stylesheet" href="${contextPath}/css/common2.css">
+  <link rel="stylesheet" href="${contextPath}/css/ticket.css">
 <title>예매하기</title>
 <script type="text/javascript">
 
@@ -45,7 +45,7 @@ function fn_ticket() {
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   
   <!-- JSCODE -->
-  <script src="${contextPath}/teamproject/js/ticket.js" defer></script>
+  <script src="${contextPath}/js/ticket.js" defer></script>
 </head>
 <body>
   <div class="inner">
@@ -75,7 +75,6 @@ function fn_ticket() {
 	      <div class="movie_tbl tbl_con">
 	        <span class="">영화선택</span>
 	        <ul>
-	          <li><a href="#">${mvInfoList[0].mvTitle}</a></li>
 	          <li><a href="#">${mvInfoList[4].mvTitle}</a></li>
 	        </ul>
 	      </div>
@@ -108,7 +107,7 @@ function fn_ticket() {
     	</div>
 	
 	    <div class="btn_con">
-	      <a class="movieListBtn" href="${contextPath}/teamproject/movieChart.jsp">영화리스트</a>
+	      <a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
 	      <a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
 	    </div>
 	  </div>
