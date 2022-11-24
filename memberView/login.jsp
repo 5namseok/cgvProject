@@ -110,15 +110,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">

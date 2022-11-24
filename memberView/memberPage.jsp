@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/memberPage.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -110,15 +112,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -229,27 +234,20 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-        <h2>마이페이지</h2>
 	    <div class="main_container">
 	      <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
 	        <!-- name부분 추후 수정 -->
-	      <div class="modMember">
-	        <a href="${contextPath}/member/cfmPwdMod.do">회원정보 수정/</a>
-	        <a href="${contextPath}/member/cfmPwdDel.do">탈퇴</a>
+	      <div class="modMember chk">
+	        <a href="${contextPath}/member/cfmPwdMod.do">회원정보 수정 / </a>
+          <a href="${contextPath}/member/cfmPwdDel.do">회원 탈퇴</a>
 	      </div> <!-- modMember -->
 	
-	      <div class="bookingList">
-	        <h3>예매내역</h3>
-	        <table>
-	          <!-- 예매내역 추후 연동/추가 -->
-	        </table>
+	      <div class="bookingList chk">
+	        <p><a href=#>MY 예매내역 확인</a></p>
 	      </div>
 	
-	      <div class="QnA">
-	        <h3>Q&A</h3>
-	        <table>
-	          <!-- QnA 추후 연동/추가 -->
-	        </table>
+	      <div class="QnA chk">
+	        <P><a href=#>MY Q&A 확인</a></P>
 	      </div>
 	
 	    </div> <!-- //main_container -->

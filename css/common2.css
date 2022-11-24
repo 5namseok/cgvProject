@@ -2,12 +2,7 @@
   box-sizing: border-box;
 }
 
-.inner{
-  width: 800px;
-  padding-bottom: 30px;
-  margin: auto;
-  border : 15px double royalblue;
-}
+
 
 .memInfo{
   display: flex;
@@ -18,7 +13,6 @@
   margin: 10px;
   padding: 5px;
   background-color: #fff;
-  border : 2px solid royalblue;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -26,7 +20,6 @@
 .title{
   height: 100px;
   margin: 0 20px;
-  border-bottom: double 5px royalblue;
   border-radius: 20%;
   display: flex;
   justify-content: center;

@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/modMember.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -107,15 +109,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -226,33 +231,34 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2>회원정보 수정</h2>
-      <div class="main_container">
+      <div class="mod_container">
+        <div class="mod_title">
+          <h2>회원정보수정</h2>
+        </div>
         <form action="${contextPath}/member/modMemberForm.do?id=<%=session.getAttribute("id")%>" method="post" id="modFrom">
-          <!-- controller에서 modMember, DAO에서 memberInfo 만들기 -->
-          <table>
+          <table class="modForm_table">
             <tr>
-              <td><p>이름</p></td>
+              <td class="input_label">이름</td>
               <td><input type="text" id="name" name="name" value="${memberInfo.name}" required disabled></td>
             </tr>
             <tr>
-              <td>아이디</td>
+              <td class="input_label">아이디</td>
               <td><input type="text" id="id" name="id" value="${memberInfo.id}" required maxlength="13" disabled></td>
             </tr>
             <tr>
-              <td>비밀번호</td>
+              <td class="input_label">비밀번호</td>
               <td><input type="password" id="pw" name="pw" required placeholder="영문/숫자 조합(최대 15자)" maxlength="15"></td>
             </tr>
             <tr>
-              <td>휴대폰 번호</td>
+              <td class="input_label">휴대폰 번호</td>
               <td><input type="tel" id="hp" name="hp" value="${memberInfo.hp}" required oninput="autoHyphen(this)" maxlength="13"></td>
             </tr>
             <tr>
-              <td>생년월일</td>
+              <td class="input_label">생년월일</td>
               <td><input type="date" id="birth" name="birth" value="${memberInfo.birth}" required disabled></td>
             </tr>
             <tr>
-              <td>이메일</td>
+              <td class="input_label">이메일</td>
               <td><input type="email" id="email" value="${memberInfo.email}" name="email"></td>
             </tr>
           </table> <!-- //modForm table -->

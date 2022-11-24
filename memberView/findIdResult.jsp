@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/findIdPw.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -108,15 +110,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -226,22 +231,12 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2>회원가입</h2>
-	    <div class="main_container">
-			<form action="${contextPath}/member/findId.do" method="post" id="findIdForm" name="findIdForm">
-				<h2>아이디 찾기</h2>
-				<p>회원님의 아이디는 ${foundId}입니다.</p>
-		        <div>
-		        	<input type="submit" id="findId" value="로그인하기">	
-		        </div>
-			</form>
-			<form action="${contextPath}/member/findPw.do" method="post" id="findPwForm" name="findPwForm">
-				<h2>비밀번호 찾기</h2>
-				<p>회원님의 비밀번호는 ${foundPw}입니다.</p>
-		        <div>
-		        	<input type="submit" id="findPw" value="로그인하기">	
-		        </div>
-			</form>
+	    <div class="findForm_container">
+        <form action="${contextPath}/member/findId.do" method="post" id="findIdForm" class="found">
+          <h2>${finding} 찾기</h2>
+          <p>회원님의 ${finding}는 ${result}입니다.</p>
+          <input type="button" class="btn_find" value="로그인하기" onclick="moveToLogin(this.form)">	
+        </form>
 	    </div> <!-- //main_container -->
     </div>
   </div>

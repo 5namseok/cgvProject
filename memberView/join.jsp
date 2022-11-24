@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/join.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -108,15 +110,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -226,46 +231,49 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2>회원가입</h2>
-	    <div class="main_container">
+	    <div class="join_container">
+        <div class="join_title">
+          <h2>회원가입</h2>
+        </div>
 	      <!-- 회원가입 입력 폼 -->   
 	      <form action="${contextPath}/member/joinMember.do" method="post" id="joinForm" name="joinForm" >
 	        <!-- controller, DAO에서 addMember(회원가입) 만들기 -->
-	        <table>
+	        <table class="joinForm_table">
 	          <tr>
-	            <td>이름</td>
+	            <td class="input_label">이름</td>
 	            <td><input type="text" id="name" name="name" required></td>
 	          </tr>
 	          <tr>
-	            <td>아이디</td>
+	            <td class="input_label">아이디</td>
 	            <td><input type="text" id="id" name="id" required placeholder="영문, 숫자 조합(최대 13자)" maxlength="13"></td>
 	            <td><input type="button" id="btnIdChk" value="ID 중복확인" onclick="fn_idChk()"></td>
 	            	<!-- fn_idChk : 아이디 체크 기능 -->
 	          </tr>
 	          <tr>
+	          	<td class="input_label"></td>
 	          	<td><div id="idMsg"></div><td> 
-	          	<!-- 아이디 중복 확인 메세지 뜨는 곳 -->
+	          	 <!--아이디 중복 확인 메세지 뜨는 곳 -->
 	          </tr>
 	          <tr>
-	            <td>비밀번호</td>
+	            <td class="input_label">비밀번호</td>
 	            <td><input type="password" id="pw" name="pw" required placeholder="영문/숫자 조합(최대 15자)" maxlength="15"></td>
 	          </tr>
 	          <tr>
-	            <td>휴대폰 번호</td>
-	            <td><input type="tel" id="hp" name="hp" name="hp"required oninput="autoHyphen(this)" maxlength="13"></td>
+	            <td class="input_label">휴대폰 번호</td>
+	            <td><input type="tel" id="hp" name="hp" required oninput="autoHyphen(this)" maxlength="13"></td>
 	          </tr>
 	          <tr>
-	            <td>생년월일</td>
-	            <td><input type="date" id="birth" name="birth" name="birth" required></td>
+	            <td class="input_label">생년월일</td>
+	            <td><input type="date" id="birth" name="birth" data-placeholder="날짜 선택" required></td>
 	          </tr>
 	          <tr>
-	            <td>이메일</td>
+	            <td class="input_label">이메일</td>
 	            <td><input type="email" id="email" name="email"></td>
 	          </tr>
 	        </table> <!-- //joinForm table -->
 	        <div class="btnJoinForm">
 	          <input type="submit" value="회원가입">
-	          <input type="button" value="취소" onclick="backToMain(this.form)">
+	          <!--<input type="button" value="취소" onclick="backToMain(this.form)">-->
 	        </div> <!-- //btnJoinForm -->
 	      </form> <!-- //joinForm -->
 	

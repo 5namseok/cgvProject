@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/cfmPwd.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -107,15 +109,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -225,15 +230,16 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-	    <h2>회원탈퇴</h2>
 	    <div class="main_container">
 	      <h3>회원탈퇴 전 아래 사항을 꼭 확인해주세요</h3>
-	      <p>‣ 회원 탈퇴를 신청하시면 즉시 회원의 모든 정보가 삭제됩니다.</p>
-	      <p>‣ QnA 게시판에 등록된 게시물은 탈퇴 후에도 삭제되지않습니다. <br> 삭제를 원하시는 경우 반드시 직접 삭제 후 탈퇴를 신청해주시기 바랍니다.</p>
+        <div class="alert">
+          <p class="p">‣ 회원 탈퇴를 신청하시면 즉시 회원의 모든 정보가 삭제됩니다.</p>
+          <p class="p">‣ QnA 게시판에 등록된 게시물은 탈퇴 후에도 삭제되지않습니다.<br> &nbsp&nbsp삭제를 원하시는 경우 반드시 직접 삭제 후 탈퇴를 신청해주시기<br> &nbsp&nbsp바랍니다.</p>
+        </div>
 	      <form action="${contextPath}/member/cfmPwdForm_del.do">
-	      	<input type="hidden" name="session_id" value="<%=session.getAttribute("id")%>">
-	        <input type="password" name="pw" placeholder="비밀번호를 입력해주세요">
-	        <input type="submit" value="회원탈퇴">
+	      	<input type="hidden" name="session_id" value="<%=session.getAttribute("id") %>">
+	        <input type="password"  class="input" name="pw" placeholder="비밀번호를 입력해주세요">
+	        <input type="submit" class="btn_cfm" value="회원탈퇴">
 	      </form>
 	    </div> <!-- //main_container -->
     </div>

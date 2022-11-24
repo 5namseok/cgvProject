@@ -16,6 +16,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/cfmPwd.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -107,15 +109,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -231,8 +236,8 @@
 	      <form action="${contextPath}/member/cfmPwdForm_mod.do" method="post">
 	      	<input type="hidden" name="session_id" value="<%=session.getAttribute("id")%>">
 	      	<!-- 아이디는 세션값으로 받아 올 수 있도록 함 (사용자에게는 노출x)-->
-	        <input type="password" name="pw" placeholder="비밀번호를 입력해주세요">
-	        <input type="submit" value="확인">
+	        <input type="password" class="input" name="pw" placeholder="비밀번호를 입력해주세요">
+	        <input type="submit" class="btn_cfm" value="확인">
 	      </form>
 	  </div>
     </div>

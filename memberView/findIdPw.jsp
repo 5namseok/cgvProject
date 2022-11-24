@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
+  <link rel="stylesheet" href="${contextPath}/css/findIdPw.css">
+
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -40,6 +42,7 @@
   <!-- JAVA SCRIPT 연결 -->
   <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
+  <script src="${contextPath}/js/findidpw.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   
   <!-- contextPath 저장 -->
@@ -108,15 +111,18 @@
               </c:otherwise>
             </c:choose>
           </div> <!--  //div class="login_info" -->
-
-
-
-
           <div class="myCGV">
-            <a href="#">
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-            </a>
+            <c:choose>
+ 		  	      <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+ 		  	  	    <a href="${contextPath}/member/login.do">
+ 		  	      </c:when>
+ 		  	      <c:otherwise>
+ 		  	  	    <a href="${contextPath}/member/memberPage.do">
+ 		  	      </c:otherwise>
+ 		  	    </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+              </a>
           </div>
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
@@ -225,44 +231,39 @@
 
   <!-- CONTAINER -->
   <div class="container">
-    <div class="inner">
-	    <div class="main_container">
-			<form action="${contextPath}/member/findId.do" method="post" id="findIdForm" name="findIdForm">
-				<h2>아이디 찾기</h2>
-				<table>
-		          <tr>
-		            <td><p>이름</p></td>
-		            <td><input type="text" id="name" name="name" required></td>
-		          </tr>
-		          <tr>
-		            <td>휴대폰 번호</td>
-		            <td><input type="tel" id="hp" name="hp" name="hp"required oninput="autoHyphen(this)" maxlength="13"></td>
-		          </tr>
-		        </table>
-		        <div>
-		        	<input type="submit" id="findId" value="아이디 찾기">	
-		        </div>
-			</form>
-			<form action="${contextPath}/member/findPw.do" method="post" id="findPwForm" name="findPwForm">
-				<h2>비밀번호 찾기</h2>
-				<table>
-		          <tr>
-		            <td><p>아이디</p></td>
-		            <td><input type="text" id="id" name="id" required></td>
-		          </tr>
-		          <tr>
-		            <td><p>이름</p></td>
-		            <td><input type="text" id="name" name="name" required></td>
-		          </tr>
-		          <tr>
-		            <td>휴대폰 번호</td>
-		            <td><input type="tel" id="hp" name="hp" name="hp"required oninput="autoHyphen(this)" maxlength="13"></td>
-		          </tr>
-		        </table>
-		        <div>
-		        	<input type="submit" id="findPw" value="비밀번호 찾기">	
-		        </div>
-			</form>
+    <div class="inner"> <!--board area-->
+	    <div class="findForm_container"> <!--notice area-->
+        <div class="find_index">
+          <p class="find_id target"><a href="#findIdForm">아이디찾기</a></p>
+          <p class="find_pw"><a href="#findPwForm">비밀번호찾기</a></p>
+        </div>
+        <form action="${contextPath}/member/findId.do" method="post" id="findIdForm" name="findIdForm"> <!--section-->
+          <h2 class="findForm_title">아이디 찾기</h2>
+          <table>
+            <tr>
+              <td><input type="text" id="name" name="name" required placeholder="이름"></td>
+            </tr>
+            <tr>
+              <td><input type="tel" id="hp" name="hp" required oninput="autoHyphen(this)" maxlength="13" placeholder="휴대폰 번호"></td>
+            </tr>
+          </table>
+          <input type="submit" id="findId" class="btn_find" value="확인">
+        </form>
+        <form action="${contextPath}/member/findPw.do" method="post" id="findPwForm" name="findPwForm">
+          <h2 class="findForm_title">비밀번호 찾기</h2>
+          <table>
+            <tr>
+              <td><input type="text" id="id" name="id" required placeholder="아이디"></td>
+            </tr>
+            <tr>
+              <td><input type="text" id="name" name="name" required placeholder="이름"></td>
+            </tr>
+            <tr>
+              <td><input type="tel" id="hp" name="hp" required oninput="autoHyphen(this)" maxlength="13" placeholder="휴대폰 번호"></td>
+            </tr>
+          </table>
+          <input type="submit" id="findPw" class="btn_find"  value="확인">
+        </form>
 	    </div> <!-- //main_container -->
     </div>
   </div>
