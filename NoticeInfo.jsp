@@ -4,12 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="./css/icommon.css">
+  <link rel="stylesheet" href="./css/Q.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -34,7 +36,7 @@
 
   <!-- JAVA SCRIPT 연결 -->
   <script src="./js/common.js" defer></script>
-<title>공지사항 정보</title>
+<title>Insert title here</title>
 </head>
 <body>
 <!-- HEADER -->
@@ -102,11 +104,20 @@
 
 
         <div class="myCGV">
-          <a href="#">
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <a href="${contextPath}/member/login.do">
+              </c:when>
+              <c:otherwise>
+                <a href="${contextPath}/member/memberPage.do">
+              </c:otherwise>
+            </c:choose>
             <i class='bx bx-user'></i>
             <p>MY CGV</p>
           </a>
         </div>
+
+
         <div class="QNA">
           <a href="${contextPath}/NoticeListCon.do">
             <i class='bx bx-support'></i>
@@ -215,18 +226,19 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2>게시글 보기</h2>
-			<table width = "600" border = "1">
+      
+			<table width = "600" border = "1" class="Qtable">
+				<caption>공지사항 보기</caption>
 				<tr height = "40">
 					<td width = "100" align ="center">글번호 </td>
-					<td width = "180" align ="left">${bean.num}</td> <!-- Controller에서 넘겨줄때 "bean"으로 넘겨줌 -->
+					<td width = "180" align ="center">${bean.num}</td> <!-- Controller에서 넘겨줄때 "bean"으로 넘겨줌 -->
 					<td width = "120" align ="center">조회수 </td>
 					<td width = "180" align ="center">${bean.readcount} </td>
 				</tr>
 				
 				<tr height = "40">
 					<td width = "100" align ="center">작성자 </td>
-					<td width = "180" align ="left">${bean.id}</td>
+					<td width = "180" align ="center">${bean.id}</td>
 					<td width = "120" align ="center">작성일 </td>
 					<td width = "180" align ="center">${bean.w_date}</td>
 				</tr>
@@ -244,10 +256,10 @@
 				<tr height = "40">
 					<td align ="center" colspan = "4">
 						<c:if test="${sId eq 'admin'}">
-						<input type="button" value="수정하기" onclick="location.href='NoticeUpdateCon.do?num=${bean.num}'"> 
-						<input type="button" value="삭제하기" onclick="location.href='NoticeDeleteCon.do?num=${bean.num}'"> 
+						<input type="button" value="수정하기" onclick="location.href='NoticeUpdateCon.do?num=${bean.num}'" class="clickBox"> 
+						<input type="button" value="삭제하기" onclick="location.href='NoticeDeleteCon.do?num=${bean.num}'" class="clickBox"> 
 						</c:if>
-						<input type="button" value="목록보기" onclick="location.href='NoticeListCon.do'">     
+						<input type="button" value="목록보기" onclick="location.href='NoticeListCon.do'" class="clickBox">     
 					</td>
 				</tr>
 		</table>

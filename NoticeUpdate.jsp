@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="./css/icommon.css">
+  <link rel="stylesheet" href="./css/Q.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -34,7 +36,7 @@
 
   <!-- JAVA SCRIPT 연결 -->
   <script src="./js/common.js" defer></script>
-<title>공지사항 수정</title>
+<title>Insert title here</title>
 </head>
 <body>
 <!-- HEADER -->
@@ -102,11 +104,20 @@
 
 
         <div class="myCGV">
-          <a href="#">
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <a href="${contextPath}/member/login.do">
+              </c:when>
+              <c:otherwise>
+                <a href="${contextPath}/member/memberPage.do">
+              </c:otherwise>
+            </c:choose>
             <i class='bx bx-user'></i>
             <p>MY CGV</p>
           </a>
         </div>
+
+
         <div class="QNA">
           <a href="${contextPath}/NoticeListCon.do">
             <i class='bx bx-support'></i>
@@ -215,9 +226,10 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2> 게시글 수정</h2>
-	<form action="NoticeUpdateProcCon.do" method ="post">
-		<table width = "600" border = "1">
+      
+	<form action="NoticeUpdateProcCon.do" method ="post" >
+		<table width = "600" border = "1" class="Qtable">
+			<caption>공지사항 수정</caption>
 			<tr height= "40">
 				<td width="120" align="center">작성자</td>
 				<td width="180" align="center">${bean.id}</td>
@@ -225,22 +237,22 @@
 				<td width="180" align="center">${bean.w_date}</td>
 			</tr>
 			
-			<tr height= "40">
+			<tr height= "40" class="subjectBox">
 				<td width="120" align="center">제목</td>
 				<td width="480" colspan="3">&nbsp;<input type="text" name="subject" value="${bean.subject}" size="60"></td>
 			</tr>
 			
-			<tr height= "40">
+			<tr height= "40" class="contentBox">
 				<td width="120" align="center">글내용</td>
 				<td width="480" colspan="3"><textarea rows="10" cols="60" name="content" align="left">${bean.content}</textarea></td>
 			</tr>
 			
 			<tr height= "40">
 				<td colspan="4" align="center">
-					<input type="hidden" name="num" value="${bean.num}">
+					<input type="hidden" name="num" value="${bean.num}" >
 					
-					<input type="submit" value="글수정">&nbsp;&nbsp;
-					<input type="button" onclick = "location.href='NoticeListCon.do'" value="전체 글 보기">
+					<input type="submit" value="글수정" class="clickBox">&nbsp;&nbsp;
+					<input type="button" onclick = "location.href='NoticeListCon.do'" value="전체 글 보기" class="clickBox">
 				</td>
 			</tr>
 		</table>

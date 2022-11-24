@@ -8,19 +8,19 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>¸ÞÀÎÆäÀÌÁö</title>
+  <title>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
-  <!--°øÅë¿µ¿ª CSS-->
+  <!--ï¿½ï¿½ï¿½ë¿µï¿½ï¿½ CSS-->
 
-  <!-- BOXICONE https://boxicons.com/ »çÀÌÆ®¿¡¼­ ÀÌ¸ðÆ¼ÄÜ °¡Á®¿Ã ¼ö ÀÖÀ½-->
+  <!-- BOXICONE https://boxicons.com/ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- LODASH CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
     integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
     crossorigin="anonymous"></script>
-  <!-- GSAP CDN (javascript·Î ¾Ö´Ï¸ÅÀÌ¼Ç È¿°ú)-->
+  <!-- GSAP CDN (javascriptï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ È¿ï¿½ï¿½)-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
     integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
     crossorigin="anonymous"></script>
@@ -33,7 +33,7 @@
     integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
     crossorigin="anonymous"></script>
 
-  <!-- JAVA SCRIPT ¿¬°á -->
+  <!-- JAVA SCRIPT ï¿½ï¿½ï¿½ï¿½ -->
   <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -45,7 +45,7 @@
   <!-- HEADER -->
   <header>
     <div class="inner">
-      <!-- logo & ÀÌ¸ðÆ¼ÄÜ¿µ¿ª -->
+      <!-- logo & ì´ëª¨í‹°ì½˜ì˜ì—­ -->
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
@@ -64,7 +64,7 @@
               <div class="mem_join">
                 <a href="${contextPath}/member/join.do">
                   <i class='bx bx-user-plus'></i>
-                  <p>È¸¿ø°¡ÀÔ</p> <!--  -->
+                  <p>íšŒì›ê°€ìž…</p> <!--  -->
                 </a>
               </div>
             </c:when>
@@ -74,7 +74,7 @@
                   Object ID_get=session.getAttribute("id");
                 %>
                 <a href="#">
-                  <p><%=ID_get %>´Ô<br> È¯¿µÇÕ´Ï´Ù</p>
+                  <p><%=ID_get %>ë‹˜<br> í™˜ì˜í•©ë‹ˆë‹¤</p>
                 </a>
               </div>
 
@@ -82,13 +82,13 @@
           </c:choose>
 
           <div class="login_info">
-            <!-- ·Î±×ÀÎ/ºñ·Î±×ÀÎ »óÅÂ¿¡ µû¶ó ´Ù¸£°Ô º¸ÀÌ°Ô -->
+            <!-- ë¡œê·¸ì¸/ë¹„ë¡œê·¸ì¸ ìƒíƒœì— ë”°ë¼ ë‹¤ë¥´ê²Œ ë³´ì´ê²Œ -->
             <c:choose>
               <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
                 <div class="login">
                   <a href="${contextPath}/member/login.do">
                     <i class='bx bx-log-in-circle'></i>
-                    <p>·Î±×ÀÎ</p>
+                    <p>ë¡œê·¸ì¸</p>
                   </a>
                 </div>
               </c:when>
@@ -96,7 +96,7 @@
                 <div class="logout">
                   <a href="${contextPath}/member/logout.do">
                     <i class='bx bx-log-out-circle'></i>
-                    <p>·Î±×¾Æ¿ô</p>
+                    <p>ë¡œê·¸ì•„ì›ƒ</p>
                   </a>
                 </div>
               </c:otherwise>
@@ -107,103 +107,112 @@
 
 
           <div class="myCGV">
-            <a href="#">
+              <c:choose>
+                <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                  <a href="${contextPath}/member/login.do">
+                </c:when>
+                <c:otherwise>
+                  <a href="${contextPath}/member/memberPage.do">
+                </c:otherwise>
+              </c:choose>
               <i class='bx bx-user'></i>
               <p>MY CGV</p>
-            </a>
-          </div>
+						</a>
+					</div>
+
+
           <div class="QNA">
             <a href="${contextPath}/NoticeListCon.do">
               <i class='bx bx-support'></i>
-              <p>°í°´¼¾ÅÍ</p>
+              <p>ê³ ê°ì„¼í„°</p>
             </a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- MENU & SEARCH ¿µ¿ª -->
+    <!-- MENU & SEARCH ì˜ì—­ -->
     <div class="menu_area">
       <div class="inner">
         <ul class="main_menu">
           <li>
-            <h2 class="menu_name">¿µÈ­</h2>
+            <h2 class="menu_name">ì˜í™”</h2>
             <ul class="menu_contents">
               <li>
-                <h3>¿µÈ­</h3>
+                <h3>ì˜í™”</h3>
               </li>
-              <li><a href="${contextPath}/movie/movieChart.do">¹«ºñÂ÷Æ®</a></li>
-              <li><a href="#">¾ÆÆ®ÇÏ¿ì½º</a></li>
+              <li><a href="${contextPath}/movie/movieChart.do">ë¬´ë¹„ì°¨íŠ¸</a></li>
+              <li><a href="#">ì•„íŠ¸í•˜ìš°ìŠ¤</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
           </li>
 
           <li>
-            <h2 class="menu_name">±ØÀå</h2>
+            <h2 class="menu_name">ê·¹ìž¥</h2>
             <ul class="menu_contents">
               <li>
-                <h3>±ØÀå</h3>
+                <h3>ê·¹ìž¥</h3>
               </li>
-              <li><a href="#">CGV ±ØÀå</a></li>
-              <li><a href="#">Æ¯º°°ü</a></li>
+              <li><a href="#">CGV ê·¹ìž¥</a></li>
+              <li><a href="#">íŠ¹ë³„ê´€</a></li>
             </ul>
           </li>
 
           <li>
-            <h2 class="menu_name">¿¹¸Å</h2>
+            <h2 class="menu_name">ì˜ˆë§¤</h2>
             <ul class="menu_contents">
               <li>
-                <h3>¿¹¸Å</h3>
+                <h3>ì˜ˆë§¤</h3>
               </li>
-              <li><a href="${contextPath}/movie/ticket.do">ºü¸¥¿¹¸Å</a></li>
-              <li><a href="#">»ó¿µ½ºÄÉÁÙ</a></li>
+              <li><a href="${contextPath}/movie/ticket.do">ë¹ ë¥¸ì˜ˆë§¤</a></li>
+              <li><a href="#">ìƒì˜ìŠ¤ì¼€ì¤„</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
             </ul>
           </li>
 
           <li>
-            <h2 class="menu_name">½ºÅä¾î</h2>
+            <h2 class="menu_name">ìŠ¤í† ì–´</h2>
             <ul class="menu_contents">
               <li>
-                <h3>½ºÅä¾î</h3>
+                <h3>ìŠ¤í† ì–´</h3>
               </li>
-              <li><a href="#">¿µÈ­°ü¶÷±Ç</a></li>
-              <li><a href="#">±âÇÁÆ®Ä«µå</a></li>
-              <li><a href="#">ÄÞº¸</a></li>
-              <li><a href="#">ÆËÄÜ</a></li>
-              <li><a href="#">À½·á</a></li>
-              <li><a href="#">½º³¼</a></li>
-              <li><a href="#">ÇÃ·¹ÀÌÁ¸</a></li>
-              <li><a href="#">¾¾³×¼¥></a></li>
+              <li><a href="#">ì˜í™”ê´€ëžŒê¶Œ</a></li>
+              <li><a href="#">ê¸°í”„íŠ¸ì¹´ë“œ</a></li>
+              <li><a href="#">ì½¤ë³´</a></li>
+              <li><a href="#">íŒì½˜</a></li>
+              <li><a href="#">ìŒë£Œ</a></li>
+              <li><a href="#">ìŠ¤ë‚µ</a></li>
+              <li><a href="#">í”Œë ˆì´ì¡´</a></li>
+              <li><a href="#">ì”¨ë„¤ìƒµ></a></li>
             </ul>
           </li>
 
           <li>
-            <h2 class="menu_name">ÀÌº¥Æ®</h2>
+            <h2 class="menu_name">ì´ë²¤íŠ¸</h2>
             <ul class="menu_contents">
               <li>
-                <h3>ÀÌº¥Æ®</h3>
+                <h3>ì´ë²¤íŠ¸</h3>
               </li>
               <li><a href="#">SPECIAL</a></li>
-              <li><a href="#">¿µÈ­/¿¹¸Å</a></li>
-              <li><a href="#">¸â¹ö½Ê/CLUB</a></li>
-              <li><a href="#">CGV ±ØÀåº°</a></li>
-              <li><a href="#">Á¦ÈÞÇÒÀÎ</a></li>
-              <li><a href="#">´çÃ·ÀÚ ¹ßÇ¥</a></li>
-              <li><a href="#">Á¾·áµÈ ÀÌº¥Æ®</a></li>
+              <li><a href="#">ì˜í™”/ì˜ˆë§¤</a></li>
+              <li><a href="#">ë©¤ë²„ì‹­/CLUB</a></li>
+              <li><a href="#">CGV ê·¹ìž¥ë³„</a></li>
+              <li><a href="#">ì œíœ´í• ì¸</a></li>
+              <li><a href="#">ë‹¹ì²¨ìž ë°œí‘œ</a></li>
+              <li><a href="#">ì¢…ë£Œëœ ì´ë²¤íŠ¸</a></li>
             </ul>
           </li>
 
           <li>
-            <h2 class="menu_name">ÇýÅÃ</h2>
+            <h2 class="menu_name">í˜œíƒ</h2>
             <ul class="menu_contents">
               <li>
-                <h3>ÇýÅÃ</h3>
+                <h3>í˜œíƒ</h3>
               </li>
-              <li><a href="#">CGV ÇÒÀÎÁ¤º¸</a></li>
-              <li><a href="#">CLUB ¼­ºñ½º</a></li>
-              <li><a href="#">VIP ¶ó¿îÁö</a></li>
+              <li><a href="#">CGV í• ì¸ì •ë³´</a></li>
+              <li><a href="#">CLUB ì„œë¹„ìŠ¤</a></li>
+              <li><a href="#">VIP ë¼ìš´ì§€</a></li>
             </ul>
           </li>
         </ul>
@@ -220,20 +229,20 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-      <h2>Q&A °Ô½ÃÆÇ</h2>
+      <h2>Q&A ï¿½Ô½ï¿½ï¿½ï¿½</h2>
 		<table width="700" border="1" bordercolor="gray">
 			<tr height = "40">
 				<td colspan="5" align="right">
-					<input type="button" value="±Û¾²±â" onclick="location.href ='${contextPath}/QNAWriteController.do'">
+					<input type="button" value="ï¿½Û¾ï¿½ï¿½ï¿½" onclick="location.href ='${contextPath}/QNAWriteController.do'">
 				</td>
 			</tr>
 			
 			<tr height = "40" bgcolor="#FAF4C0">
-				<td width = "50" align ="center">¹øÈ£ </td>
-				<td width = "320" align ="center">Á¦¸ñ</td>
-				<td width = "100" align ="center">¾ÆÀÌµð </td>
-				<td width = "150" align ="center">ÀÛ¼ºÀÏ </td>
-				<td width = "80" align ="center">Á¶È¸¼ö</td>
+				<td width = "50" align ="center">ï¿½ï¿½È£ </td>
+				<td width = "320" align ="center">ï¿½ï¿½ï¿½ï¿½</td>
+				<td width = "100" align ="center">ï¿½ï¿½ï¿½Ìµï¿½ </td>
+				<td width = "150" align ="center">ï¿½Û¼ï¿½ï¿½ï¿½ </td>
+				<td width = "80" align ="center">ï¿½ï¿½È¸ï¿½ï¿½</td>
 			</tr>
 			
 			<c:set var="number" value="${number}" />
@@ -259,13 +268,13 @@
 		
 	<c:if test="${count>0}">
 		<c:if test="${blockStart > page}">
-			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart-page}">[ÀÌÀü]</a>
+			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart-page}">[ï¿½ï¿½ï¿½ï¿½]</a>
 		</c:if>
 		<c:forEach var="i" begin="${blockStart}" end="${blockEnd}">
 				<a href="${contextPath}/QNAListController.do?pageNum=${i}" style ="text-decoration:none">[${i}]</a>
 		</c:forEach>
 		<c:if test="${blockEnd < pageCount}">
-			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart+page}">[´ÙÀ½]</a>
+			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart+page}">[ï¿½ï¿½ï¿½ï¿½]</a>
 		</c:if>
 	</c:if>
     </div>
@@ -276,27 +285,27 @@
     <div class="policy_list">
       <div class="inner">
         <ul>
-          <li><a href="#">È¸»ç¼Ò°³</a></li>
+          <li><a href="#">È¸ï¿½ï¿½Ò°ï¿½</a></li>
           <li><a href="#">IR</a></li>
-          <li><a href="#">Ã¤¿ëÁ¤º¸</a></li>
-          <li><a href="#">±¤°í/Á¦ÈÞ/ÃâÁ¡¹®ÀÇ</a></li>
-          <li><a href="#">ÀÌ¿ë¾à°ü</a></li>
-          <li><a href="#">Æí¼º±âÁØ</a></li>
-          <li><a href="#">°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</a></li>
-          <li><a href="#">¹ýÀû°íÁö</a></li>
-          <li><a href="#">ÀÌ¸ÞÀÏÁÖ¼Ò¹«´Ü¼öÁý°ÅºÎ</a></li>
-          <li><a href="#">À±¸®°æ¿µ</a></li>
-          <li><a href="#">»çÀÌ¹ö°¨»ç½Ç</a></li>
+          <li><a href="#">Ã¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+          <li><a href="#">ï¿½Ì¿ï¿½ï¿½ï¿½</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½Ä§</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
+          <li><a href="#">ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½Ö¼Ò¹ï¿½ï¿½Ü¼ï¿½ï¿½ï¿½ï¿½Åºï¿½</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½ï¿½ï¿½æ¿µ</a></li>
+          <li><a href="#">ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</a></li>
         </ul>
       </div>
     </div>
     <div class="company_info_wrap">
       <div class="inner">
         <div class="company_info">
-          <p>(04377)¼­¿ïÆ¯º°½Ã ¿ë»ê±¸ ÇÑ°­´ë·Î 23±æ 55, ¾ÆÇÇÄ«¹Ç·Î 6Ãþ(ÇÑ°­·Îµ¿)</p>
-          <p>´ëÇ¥ÀÌ»ç : ¿À³²¼® ¡¤ »ç¾÷ÀÚµî·Ï¹øÈ£ : 123-45-678910 ¡¤ Åë½ÅÆÇ¸Å¾÷½Å°í¹øÈ£ : 2017-¼­¿ï¿ë»ê-0662 <a href="#">»ç¾÷ÀÚÁ¤º¸È®ÀÎ</a></p>
-          <p>È£½ºÆÃ»ç¾÷ÀÚ : CJ¿Ã¸®ºê³×Æ®¿÷½º ¡¤ °³ÀÎÁ¤º¸º¸È£ Ã¥ÀÓÀÚ : ½ÉÁØ¹ü ¡¤ ´ëÇ¥ÀÌ¸ÞÀÏ : abcdefg@cj.net</p>
-          <p>¨Ï CJ CGV. All Rights Reserved</p>
+          <p>(04377)ï¿½ï¿½ï¿½ï¿½Æ¯ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ê±¸ ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ 23ï¿½ï¿½ 55, ï¿½ï¿½ï¿½ï¿½Ä«ï¿½Ç·ï¿½ 6ï¿½ï¿½(ï¿½Ñ°ï¿½ï¿½Îµï¿½)</p>
+          <p>ï¿½ï¿½Ç¥ï¿½Ì»ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Úµï¿½Ï¹ï¿½È£ : 123-45-678910 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¸Å¾ï¿½ï¿½Å°ï¿½ï¿½ï¿½È£ : 2017-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-0662 <a href="#">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½</a></p>
+          <p>È£ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ : CJï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£ Ã¥ï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½Ø¹ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç¥ï¿½Ì¸ï¿½ï¿½ï¿½ : abcdefg@cj.net</p>
+          <p>ï¿½ï¿½ CJ CGV. All Rights Reserved</p>
         </div>
       </div>
     </div>

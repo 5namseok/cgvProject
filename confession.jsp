@@ -52,141 +52,188 @@
 </head>
 <body>
 <!-- HEADER -->
-  <header>
-    <div class="inner">
-      <!-- logo & 이모티콘영역 -->
-      <div class="top_area">
-        <div class="logo_con">
-          <div class="logo_image">
-            <img src="${contextPath}/teamproject/img/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${contextPath}/teamproject/imglogoWhite.png" alt="CGV" class="logo logo_white">
-          </div>
-          <div class="logo_text">
-            CURTULPLEX
-          </div>
+<header>
+  <div class="inner">
+    <!-- logo & 이모티콘영역 -->
+    <div class="top_area">
+      <div class="logo_con">
+        <div class="logo_image">
+          <a href="${contextPath}/">
+            <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+            <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+          </a>
         </div>
-        <div class="mem_info">
-          <div class="login_info">
-            <div class="login">
-              <i class='bx bx-log-in-circle'></i>
-              <p>로그인</p>
+        <div class="logo_text">
+          CURTULPLEX
+        </div>
+      </div>
+      <div class="mem_info">
+        <c:choose>
+          <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+            <div class="mem_join">
+              <a href="${contextPath}/member/join.do">
+                <i class='bx bx-user-plus'></i>
+                <p>회원가입</p> <!--  -->
+              </a>
             </div>
-            <div class="logout hidden">
-              <i class='bx bx-log-out-circle'></i>
-              <p>로그아웃</p>
+          </c:when>
+          <c:otherwise>
+            <div class="mem_join">
+              <%
+                Object ID_get=session.getAttribute("id");
+              %>
+              <a href="#">
+                <p><%=ID_get %>님<br> 환영합니다</p>
+              </a>
             </div>
-          </div>
-          <div class="mem_join">
-            <i class='bx bx-user-plus'></i>
-            <p>회원가입</p>
-          </div>
-          <div class="myCGV">
+
+          </c:otherwise>
+        </c:choose>
+
+        <div class="login_info">
+          <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
+          <c:choose>
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="login">
+                <a href="${contextPath}/member/login.do">
+                  <i class='bx bx-log-in-circle'></i>
+                  <p>로그인</p>
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="logout">
+                <a href="${contextPath}/member/logout.do">
+                  <i class='bx bx-log-out-circle'></i>
+                  <p>로그아웃</p>
+                </a>
+              </div>
+            </c:otherwise>
+          </c:choose>
+        </div> <!--  //div class="login_info" -->
+
+
+
+
+        <div class="myCGV">
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <a href="${contextPath}/member/login.do">
+              </c:when>
+              <c:otherwise>
+                <a href="${contextPath}/member/memberPage.do">
+              </c:otherwise>
+            </c:choose>
             <i class='bx bx-user'></i>
             <p>MY CGV</p>
-          </div>
-          <div class="QNA">
+          </a>
+        </div>
+
+
+        <div class="QNA">
+          <a href="${contextPath}/NoticeListCon.do">
             <i class='bx bx-support'></i>
             <p>고객센터</p>
-          </div>
+          </a>
         </div>
       </div>
-
     </div>
+  </div>
 
-    <!-- MENU & SEARCH 영역 -->
-    <div class="menu_area">
-      <div class="inner">
-        <ul class="main_menu">
-          <li>
-            <h2 class="menu_name">영화</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>영화</h3>
-              </li>
-              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
-              <li><a href="#">아트하우스</a></li>
-              <li><a href="#">ICECON</a></li>
-            </ul>
-          </li>
+  <!-- MENU & SEARCH 영역 -->
+  <div class="menu_area">
+    <div class="inner">
+      <ul class="main_menu">
+        <li>
+          <h2 class="menu_name">영화</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>영화</h3>
+            </li>
+            <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
+            <li><a href="#">아트하우스</a></li>
+            <li><a href="#">ICECON</a></li>
+          </ul>
+        </li>
 
-          <li>
-            <h2 class="menu_name">극장</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>극장</h3>
-              </li>
-              <li><a href="#">CGV 극장</a></li>
-              <li><a href="#">특별관</a></li>
-            </ul>
-          </li>
+        <li>
+          <h2 class="menu_name">극장</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>극장</h3>
+            </li>
+            <li><a href="#">CGV 극장</a></li>
+            <li><a href="#">특별관</a></li>
+          </ul>
+        </li>
 
-          <li>
-            <h2 class="menu_name">예매</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>예매</h3>
-              </li>
-              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
-              <li><a href="#">상영스케줄</a></li>
-              <li><a href="#">English Ticketing</a></li>
-              <li><a href="#">English Scedule</a></li>
-            </ul>
-          </li>
+        <li>
+          <h2 class="menu_name">예매</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>예매</h3>
+            </li>
+            <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
+            <li><a href="#">상영스케줄</a></li>
+            <li><a href="#">English Ticketing</a></li>
+            <li><a href="#">English Scedule</a></li>
+          </ul>
+        </li>
 
-          <li>
-            <h2 class="menu_name">스토어</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>스토어</h3>
-              </li>
-              <li><a href="#">영화관람권</a></li>
-              <li><a href="#">기프트카드</a></li>
-              <li><a href="#">콤보</a></li>
-              <li><a href="#">팝콘</a></li>
-              <li><a href="#">음료</a></li>
-              <li><a href="#">스낵</a></li>
-              <li><a href="#">플레이존</a></li>
-              <li><a href="#">씨네샵></a></li>
-            </ul>
-          </li>
+        <li>
+          <h2 class="menu_name">스토어</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>스토어</h3>
+            </li>
+            <li><a href="#">영화관람권</a></li>
+            <li><a href="#">기프트카드</a></li>
+            <li><a href="#">콤보</a></li>
+            <li><a href="#">팝콘</a></li>
+            <li><a href="#">음료</a></li>
+            <li><a href="#">스낵</a></li>
+            <li><a href="#">플레이존</a></li>
+            <li><a href="#">씨네샵></a></li>
+          </ul>
+        </li>
 
-          <li>
-            <h2 class="menu_name">이벤트</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>이벤트</h3>
-              </li>
-              <li><a href="#">SPECIAL</a></li>
-              <li><a href="#">영화/예매</a></li>
-              <li><a href="#">멤버십/CLUB</a></li>
-              <li><a href="#">CGV 극장별</a></li>
-              <li><a href="#">제휴할인</a></li>
-              <li><a href="#">당첨자 발표</a></li>
-              <li><a href="#">종료된 이벤트</a></li>
-            </ul>
-          </li>
+        <li>
+          <h2 class="menu_name">이벤트</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>이벤트</h3>
+            </li>
+            <li><a href="#">SPECIAL</a></li>
+            <li><a href="#">영화/예매</a></li>
+            <li><a href="#">멤버십/CLUB</a></li>
+            <li><a href="#">CGV 극장별</a></li>
+            <li><a href="#">제휴할인</a></li>
+            <li><a href="#">당첨자 발표</a></li>
+            <li><a href="#">종료된 이벤트</a></li>
+          </ul>
+        </li>
 
-          <li>
-            <h2 class="menu_name">혜택</h2>
-            <ul class="menu_contents">
-              <li>
-                <h3>혜택</h3>
-              </li>
-              <li><a href="#">CGV 할인정보</a></li>
-              <li><a href="#">CLUB 서비스</a></li>
-              <li><a href="#">VIP 라운지</a></li>
-            </ul>
-          </li>
-        </ul>
+        <li>
+          <h2 class="menu_name">혜택</h2>
+          <ul class="menu_contents">
+            <li>
+              <h3>혜택</h3>
+            </li>
+            <li><a href="#">CGV 할인정보</a></li>
+            <li><a href="#">CLUB 서비스</a></li>
+            <li><a href="#">VIP 라운지</a></li>
+          </ul>
+        </li>
+      </ul>
 
-        <div class="search_menu">
-            <input type="text" name="search_bar" id="search_bar">
-            <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
-        </div>
+      <div class="search_menu">
+        <input type="text" name="search_bar" id="search_bar">
+        <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
       </div>
-      <div class="menu_bg"></div>
     </div>
-  </header>
+    <div class="menu_bg"></div>
+  </div>
+</header>
 
     <div class="mvWrap">
         <div class="mvInfo">
