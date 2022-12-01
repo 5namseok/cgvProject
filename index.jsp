@@ -277,7 +277,7 @@
             <div class="movie_img">
               <div class="btn_con">
                 <a href="${contextPath}/movie/remember.do">상세보기</a>
-                <a href="${contextPath}/movie/rememberTicket.do">예매하기</a>
+                <a href="${contextPath}/movie/ticket.do">예매하기</a>
               </div>
               <div class="movie_num">1</div>
             </div>
@@ -287,7 +287,7 @@
             <div class="movie_img">
               <div class="btn_con">
                 <a href="${contextPath}/movie/confession.do">상세보기</a>
-                <a href="${contextPath}/movie/confessionTicket.do">예매하기</a>
+                <a href="${contextPath}/movie/ticket.do">예매하기</a>
               </div>
               <div class="movie_num">2</div>
             </div>

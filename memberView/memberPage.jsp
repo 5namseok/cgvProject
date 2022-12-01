@@ -48,6 +48,26 @@
   <script type="text/javascript" charset="utf-8">
 	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
   </script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(../img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  weight:100%;
+	  height:50%;
+	  padding-top:200px;
+	  z-index:-1;
+	}
+  </style>
 </head>
 <body>
 <!-- 로그인하지않았을 경우 접근불가, 로그인 페이지로 이동하게 만들기 // 쿠키나 세션? -->

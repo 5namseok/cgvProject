@@ -13,17 +13,17 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>자백 영화정보</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script type="text/javascript" src="${contextPath}/teamproject/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/js/jquery-3.6.0.min.js"></script>
     <!-- Slick -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
-    <link rel="stylesheet" href="${contextPath}/teamproject/css/common.css"> 
-    <link rel="stylesheet" href="${contextPath}/teamproject/css/icommon.css">
-    <script src="${contextPath}/teamproject/js/movie.js"></script>
+    <link rel="stylesheet" href="${contextPath}/css/common.css"> 
+    <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+    <script src="${contextPath}/js/movie.js"></script>
     
     <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath}/teamproject/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -47,7 +47,7 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/teamproject/js/common.js" defer></script>
+  <script src="${contextPath}/js/common.js" defer></script>
     
 </head>
 <body>
@@ -235,10 +235,11 @@
   </div>
 </header>
 
-    <div class="mvWrap">
+  <div class="container">
+    <div class="inner">
         <div class="mvInfo">
             <div class="img_box">
-                <img src="${contextPath}/teamproject/img/conf.jpg" alt="자백" >
+                <img src="${contextPath}/img/conf.jpg" alt="자백" >
             </div>
             <div class="con_box">
                 <div class="con_title">
@@ -276,15 +277,15 @@
                 <h3>트레일러</h3>
                 <div class="trailerBox">
                     <div>
-                        <video src="${contextPath}/teamproject/img/conf_tr1.mp4" autoplay controls></video>
+                        <video src="${contextPath}/img/conf_tr1.mp4" autoplay controls></video>
                         <p>메인 예고편</p>
                     </div>
                     <div>
-                        <video src="${contextPath}/teamproject/img/conf_tr2.mp4" autoplay controls></video>
+                        <video src="${contextPath}/img/conf_tr2.mp4" autoplay controls></video>
                         <p>스페셜 티저 예고편</p>
                     </div>
                     <div>
-                        <video src="${contextPath}/teamproject/img/conf_tr3.mp4" autoplay controls></video>
+                        <video src="${contextPath}/img/conf_tr3.mp4" autoplay controls></video>
                         <p>캐릭터 진술 영상</p>
                     </div>
                 </div>
@@ -295,28 +296,29 @@
                 
                 <div class="slide">
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut1.jpg" alt="스틸컷1">
+                        <img src="${contextPath}/img/conf_stillcut1.jpg" alt="스틸컷1">
                     </div>
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut2.jpg" alt="스틸컷2">
+                        <img src="${contextPath}/img/conf_stillcut2.jpg" alt="스틸컷2">
                     </div>
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut3.jpg" alt="스틸컷3">
+                        <img src="${contextPath}/img/conf_stillcut3.jpg" alt="스틸컷3">
                     </div>
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut4.jpg" alt="스틸컷4">
+                        <img src="${contextPath}/img/conf_stillcut4.jpg" alt="스틸컷4">
                     </div>
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut5.jpg" alt="스틸컷5">
+                        <img src="${contextPath}/img/conf_stillcut5.jpg" alt="스틸컷5">
                     </div>
                     <div class="slide_img">
-                        <img src="${contextPath}/teamproject/img/conf_stillcut6.jpg" alt="스틸컷6">
+                        <img src="${contextPath}/img/conf_stillcut6.jpg" alt="스틸컷6">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+  </div>
+
      <!-- FOOTER -->
   <footer>
     <div class="policy_list">

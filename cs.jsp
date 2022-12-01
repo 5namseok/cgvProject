@@ -37,7 +37,26 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script>
+  <script src="./js/common.js" defer></script><style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(./img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  weight:100%;
+	  height:50%;
+	  padding-top:200px;
+	  z-index:-1;
+	}
+  </style>
 
 </head>
     <title>고객센터</title>
@@ -282,12 +301,6 @@
           
         </div>
       </div>
-        <!--자주 찾는 서비스-->
-        <div class="bottomBar">
-          <div class="bBarItem"><a href="#">신용카드 영수증 출력</a></div>
-          <div class="bBarItem"><a href="#">아이디/비밀번호 찾기</a></div>
-          <div class="bBarItem"><a href="#">예매/취소내역 확인</a></div>
-        </div>
     	</div>
   </div>
 

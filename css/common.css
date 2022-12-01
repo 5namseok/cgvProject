@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.container{
+    margin: 30px 0 50px;
+}
+
 /*slick 플러그인 디자인변경 시작*/
 .slick-prev:before, .slick-next:before{
     color: #8C8C8C !important;
