@@ -1,9 +1,10 @@
-console.log('common JS 연결')
-
 let head=document.querySelector('header');
 let con=document.querySelector('.container');
 const toTopEl = document.querySelector('#to-top'); 
 
+if(document.body.scrollHeight<window.innerHeight){
+  toTopEl.classList.add('hidden')
+}
 
 window.addEventListener('scroll',_.throttle(()=>{
   if(window.scrollY>110) {
@@ -19,7 +20,7 @@ window.addEventListener('scroll',_.throttle(()=>{
     con.classList.remove('red');
     //버튼 숨기기
     gsap.to(toTopEl, .2, {
-      x : 200
+      x : 400
     })
   }
 },300))

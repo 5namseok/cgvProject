@@ -166,7 +166,7 @@ window.onload = function(){
 
 
           <div class="QNA">
-            <a href="${contextPath}/NoticeListCon.do">
+            <a href="${contextPath}/csCon.do">
               <i class='bx bx-support'></i>
               <p>고객센터</p>
             </a>

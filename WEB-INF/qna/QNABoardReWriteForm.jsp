@@ -45,39 +45,86 @@
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="${ctx}/image/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${ctx}/image/logoWhite.png" alt="CGV" class="logo logo_white">
+            <a href="${contextPath}/">
+              <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+              <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            </a>
           </div>
           <div class="logo_text">
             CURTULPLEX
           </div>
         </div>
         <div class="mem_info">
+          <c:choose>
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="mem_join">
+                <a href="${contextPath}/member/join.do">
+                  <i class='bx bx-user-plus'></i>
+                  <p>회원가입</p> <!--  -->
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="mem_join">
+                <%
+                  Object ID_get=session.getAttribute("id");
+                %>
+                <a href="#">
+                  <p><%=ID_get %>님<br> 환영합니다</p>
+                </a>
+              </div>
+
+            </c:otherwise>
+          </c:choose>
+
           <div class="login_info">
-            <div class="login">
-              <i class='bx bx-log-in-circle'></i>
-              <p>로그인</p>
-            </div>
-            <div class="logout hidden">
-              <i class='bx bx-log-out-circle'></i>
-              <p>로그아웃</p>
-            </div>
-          </div>
-          <div class="mem_join">
-            <i class='bx bx-user-plus'></i>
-            <p>회원가입</p>
-          </div>
+            <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <div class="login">
+                  <a href="${contextPath}/member/login.do">
+                    <i class='bx bx-log-in-circle'></i>
+                    <p>로그인</p>
+                  </a>
+                </div>
+              </c:when>
+              <c:otherwise>
+                <div class="logout">
+                  <a href="${contextPath}/member/logout.do">
+                    <i class='bx bx-log-out-circle'></i>
+                    <p>로그아웃</p>
+                  </a>
+                </div>
+              </c:otherwise>
+            </c:choose>
+          </div> <!--  //div class="login_info" -->
+
+
+
+
           <div class="myCGV">
-            <i class='bx bx-user'></i>
-            <p>MY CGV</p>
-          </div>
+              <c:choose>
+                <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                  <a href="${contextPath}/member/login.do">
+                </c:when>
+                <c:otherwise>
+                  <a href="${contextPath}/member/memberPage.do">
+                </c:otherwise>
+              </c:choose>
+              <i class='bx bx-user'></i>
+              <p>MY CGV</p>
+						</a>
+					</div>
+
+
           <div class="QNA">
-            <i class='bx bx-support'></i>
-            <p>고객센터</p>
+            <a href="${contextPath}/csCon.do">
+              <i class='bx bx-support'></i>
+              <p>고객센터</p>
+            </a>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- MENU & SEARCH 영역 -->
@@ -90,7 +137,7 @@
               <li>
                 <h3>영화</h3>
               </li>
-              <li><a href="#">무비차트</a></li>
+              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
               <li><a href="#">아트하우스</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
@@ -113,7 +160,7 @@
               <li>
                 <h3>예매</h3>
               </li>
-              <li><a href="#">빠른예매</a></li>
+              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
               <li><a href="#">상영스케줄</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
@@ -167,8 +214,8 @@
         </ul>
 
         <div class="search_menu">
-            <input type="text" name="search_bar" id="search_bar">
-            <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
+          <input type="text" name="search_bar" id="search_bar">
+          <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
         </div>
       </div>
       <div class="menu_bg"></div>

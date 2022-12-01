@@ -112,6 +112,10 @@
             </c:otherwise>
           </c:choose>
         </div> <!--  //div class="login_info" -->
+
+
+
+
         <div class="myCGV">
             <c:choose>
               <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
@@ -128,7 +132,7 @@
 
 
         <div class="QNA">
-          <a href="${contextPath}/NoticeListCon.do">
+          <a href="${contextPath}/csCon.do">
             <i class='bx bx-support'></i>
             <p>고객센터</p>
           </a>

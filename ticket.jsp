@@ -154,7 +154,7 @@
 
 
           <div class="QNA">
-            <a href="${contextPath}/NoticeListCon.do">
+            <a href="${contextPath}/csCon.do">
               <i class='bx bx-support'></i>
               <p>고객센터</p>
             </a>
@@ -271,14 +271,6 @@
       <span class="title_right">영화정보</span>
     </div>
 
-    <!-- 검색창 -->
-	<div class="search">
-		<form action="#">
-			<span class="movie_serch">영화찾기</span>
-			<input type="text" name="movieSearch" id="movieSearch">
-			<button><i class='bx bx-search-alt-2'></i></button>
-		</form>
-	</div> -->
 
 	<!-- 콘테이너 -->
 

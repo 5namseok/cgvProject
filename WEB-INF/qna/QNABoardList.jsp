@@ -46,7 +46,7 @@ request.setCharacterEncoding("utf-8");
 </head>
 
 <body>
- <!-- HEADER -->
+  <!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
@@ -126,7 +126,7 @@ request.setCharacterEncoding("utf-8");
 
 
           <div class="QNA">
-            <a href="${contextPath}/NoticeListCon.do">
+            <a href="${contextPath}/csCon.do">
               <i class='bx bx-support'></i>
               <p>고객센터</p>
             </a>

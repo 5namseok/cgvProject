@@ -12,6 +12,7 @@
   <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/mainpage.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -38,6 +39,13 @@
   <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="${contextPath}/js/main.js" defer></script>
+  <!-- 유튜브 링크 -->
+  <script defer src="./js/youtube.js"></script>
+
+  <!-- SWIPER CDN (슬라이더)-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
   <title>영화의 시작 CGV</title>
 </head>
@@ -227,13 +235,303 @@
     </div>
   </header>
 
-  <!-- CONTAINER -->
+   <!-- CONTAINER -->
   <div class="container">
-    <div class="inner">
-      <a href="${contextPath}/NoticeListCon.do">공지사항페이지</a><br>
-      <a href="${contextPath}/QNAListController.do">QNA게시판</a>
+    <div class="youtubebox">
+      <div class="inner">
+        <div id="player" class="youtubeplayer"></div>
+        <div class="textBox">
+          <h2 class="title">리멤버</h2>
+          <div class="movie_info">
+            "이 일은 아주 오래전부터 계획되었습니다"<br>
+            기억이 사라지기 전, 복수를 끝내야 한다!
+          </div>
+          <div class="btn_box">
+            <div class="more_btn">
+              <a href="#">상세보기 ></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <img src="${contextPath}/img/001.jpg" alt="123">
+    <div class="moviechart">
+      <div class="inner">
+        <div class="movieChartBeScreen_btn_wrap">
+          <div class="movieChartBeScreen">
+            <div class="movieChart"><a href="${contextPath}/movie/movieChart.do">
+                무비차트
+              </a></div>
+            <div class="beScreen"><a href="#">
+                상영예정작
+              </a></div>
+          </div>
+
+          <div class="btn_wrap">
+            <a href="${contextPath}/movie/movieChart.do">전체보기 ></a>
+          </div>
+        </div>
+
+        <div class="movie_slide">
+          <div class="movie_01 movie_con">
+            <div class="movie_img">
+              <div class="btn_con">
+                <a href="${contextPath}/movie/remember.do">상세보기</a>
+                <a href="${contextPath}/movie/rememberTicket.do">예매하기</a>
+              </div>
+              <div class="movie_num">1</div>
+            </div>
+            <div class="movie_title">리멤버</div>
+          </div>
+          <div class="movie_01 movie_con">
+            <div class="movie_img">
+              <div class="btn_con">
+                <a href="${contextPath}/movie/confession.do">상세보기</a>
+                <a href="${contextPath}/movie/confessionTicket.do">예매하기</a>
+              </div>
+              <div class="movie_num">2</div>
+            </div>
+            <div class="movie_title">자백</div>
+          </div>
+          <div class="movie_01 movie_con">
+            <div class="movie_img">
+              <div class="btn_con">
+                <a href="${contextPath}/img/blackadam.jpg">상세보기</a>
+                <a href="${contextPath}/movie/ticket.do">예매하기</a>
+              </div>
+              <div class="movie_num">3</div>
+            </div>
+            <div class="movie_title">블랙 마담</div>
+          </div>
+          <div class="movie_01 movie_con">
+            <div class="movie_img">
+              <div class="btn_con">
+                <a href="${contextPath}/img/evry.jpg">상세보기</a>
+                <a href="${contextPath}/movie/ticket.do">예매하기</a>
+              </div>
+              <div class="movie_num">4</div>
+            </div>
+            <div class="movie_title">에르비씽 에브리웨어 올 앳 원스</div>
+          </div>
+          <div class="movie_01 movie_con">
+            <div class="movie_img">
+              <div class="btn_con">
+                <a href="${contextPath}/img/highpass.jpg">상세보기</a>
+                <a href="${contextPath}/movie/ticket.do">예매하기</a>
+              </div>
+              <div class="movie_num">5</div>
+            </div>
+            <div class="movie_title">고속도로 가족</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="event">
+      <div class="inner">
+        <div class="iventScrint_btn_wrap">
+          <div class="eventTitle">EVENT</div>
+          <div class="btn_con">
+            <a href="#">전체보기 ></a>
+          </div>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper eventSwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="img_box img1"></div>
+              <div class="event_text">
+                <div class="event_title">쉽고 많은 혜택, [CGV VIP 가보자고!]</div>
+                <div class="event_day">2022.11.17~2022.12.31</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box img2"></div>
+              <div class="event_text">
+                <div class="event_title">카타르월드컵 스페셜이벤트</div>
+                <div class="event_day">2022.11.15~2022.12.31</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box img3"></div>
+              <div class="event_text">
+                <div class="event_title">[올빼미]골든에그지수 맞히기</div>
+                <div class="event_day">2022.11.23~2022.12.06</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box img4"></div>
+              <div class="event_text">
+                <div class="event_title">[원피스 레드 필름] 필름마크</div>
+                <div class="event_day">2022.11.23~2022.12.06</div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="img_box img5"></div>
+              <div class="event_text">
+                <div class="event_title">축구 굿즈 사고 뜨겁게 응원하자★</div>
+                <div class="event_day">2022.11.24~2022.12.03</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gift_card">
+      <div class="inner">
+        <div class="movie_voucher">
+          <div class="container">
+            <div class="title_btn_con">
+              <div class="title">영화관람권</div>
+              <div class="btn"><a href="#">더보기</a></div>
+            </div>
+            <div class="item item1">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">CGV 영화관람권</div>
+                <div class="price">12,000원</div>
+              </div>
+            </div>
+            <div class="item item2">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">CGV 골드클래스</div>
+                <div class="price">40,000원</div>
+              </div>
+
+            </div>
+            <div class="item item3">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">4DX관람권</div>
+                <div class="price">19,000원</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="gift_card">
+          <div class="container">
+            <div class="title_btn_con">
+              <div class="title">기프트카드</div>
+              <div class="btn"><a href="#">더보기</a></div>
+            </div>
+            <div class="item item1">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">PACONNIE A형</div>
+                <div class="price">금액충전형</div>
+              </div>
+            </div>
+            <div class="item item2">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">PACONNIE B형</div>
+                <div class="price">금액충전형</div>
+              </div>
+
+            </div>
+            <div class="item item3">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">PACONNIE C형</div>
+                <div class="price">금액충전형</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="drink">
+          <div class="container">
+            <div class="title_btn_con">
+              <div class="title">음료</div>
+              <div class="btn"><a href="#">더보기</a></div>
+            </div>
+            <div class="item item1">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">탄산음료(M)</div>
+                <div class="price">2,500원</div>
+              </div>
+            </div>
+            <div class="item item2">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">아메리카토(HOT)</div>
+                <div class="price">3,500원</div>
+              </div>
+
+            </div>
+            <div class="item item3">
+              <div class="img_box"></div>
+              <div class="text_box">
+                <div class="title">아메리카토(ICE)</div>
+                <div class="price">4,000원</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 공지사항 및 QNA + 이벤트 -->
+    <div class="notice_QNA">
+      <div class="inner">
+        <div class="notice_QNA_APP_wrap">
+          <div class="notice_QNA">
+            <div class="notice">
+              <div class="title">공지사항</div>
+              <div class="dec">[기타]22년 VIP 선정 기준 변경</div>
+              <div class="btn">
+                <a href="${contextPath}/NoticeListCon.do">더보기</a>
+              </div>
+            </div>
+            <div class="QNA">
+              <div class="title">고객센터</div>
+              <div class="dec">
+                <p>1544-1122</p>
+                고객센터 운영시간 (평일 09:00~18:00)<br>
+                업무시간 외 자동응답 안내 가능합니다.
+              </div>
+            </div>
+            <div class="btn">
+              <a href="#">FAQ</a>
+              <a href="${contextPath}/QNAListController.do">1:1문의</a>
+              <a href="#">대관/단체 문의</a>
+            </div>
+          </div>
+          <div class="APP">
+            <div class="title">앱 다운로드</div>
+            <div class="dec">cgv앱에서 더 편리하게 이용하세요</div>
+            <div class="QR">
+              <img src="${contextPath}/img/main_QR.gif" alt="QR코드">
+            </div>
+            <div class="dec">QR코드를 스캔하고<br> 앱설치 페이지로 바로 이동하세요</div>
+          </div>
+        </div>
+        <div class="notice_slide">
+          <!-- Swiper -->
+    <div class="swiper noticeSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="${contextPath}/img/noticeimg01.png" />
+        </div>
+        <div class="swiper-slide">
+          <img src="${contextPath}/img/noticeimg02.png" />
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="uricard">
+    <div class="inner">
+      <img src="${contextPath}/img/uricard.png" alt="우리카드">
     </div>
   </div>
 
@@ -270,6 +568,9 @@
 
   <div id="to-top">
     <i class='bx bx-up-arrow-alt'></i>
+  </div>
+  <div id="to-ticket">
+    <a href="${contextPath}/movie/ticket.do">예매하기</a>
   </div>
 </body>
 

@@ -60,7 +60,7 @@ for(int i=0; i<seatNum.length(); i++) {
 </script>
 </head>
 <body>
- <!-- HEADER -->
+  <!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
@@ -140,7 +140,7 @@ for(int i=0; i<seatNum.length(); i++) {
 
 
           <div class="QNA">
-            <a href="${contextPath}/NoticeListCon.do">
+            <a href="${contextPath}/csCon.do">
               <i class='bx bx-support'></i>
               <p>고객센터</p>
             </a>
@@ -250,9 +250,6 @@ for(int i=0; i<seatNum.length(); i++) {
     <div class="ticket">
         <div class="ticketImg">
             <img src="${contextPath}/img/${movieInfoVO.mvTitle}.jpg" alt="영화포스터">
-            <script type="text/javascript">
-            console.log(${movieInfoVO.mvTitle})
-            </script>
         </div>
         <div class="main">
             <p>예매번호:</p>  <span>${movieInfoVO.bookNum}</span><br>
@@ -266,7 +263,7 @@ for(int i=0; i<seatNum.length(); i++) {
     </div>
 
     <div class="btn">
-       <button><a href="${contextPath}/">홈으로</a></button> 
+      <button><a href="${contextPath}/">홈으로</a></button> 
     </div>
     <div class="line"></div>
     <div class="note">

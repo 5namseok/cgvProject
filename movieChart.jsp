@@ -11,10 +11,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="${contextPath}/teamproject/css/movieChart.css"> 
+    <link rel="stylesheet" href="${contextPath}/css/movieChart.css"> 
     <title>무비차트</title>
       <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath}/teamproject/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -38,7 +38,7 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/teamproject/js/common.js" defer></script>
+  <script src="${contextPath}/js/common.js" defer></script>
 </head>
 <body>
 <!-- HEADER -->
@@ -48,8 +48,8 @@
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="${contextPath}/teamproject/img/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${contextPath}/teamproject/imglogoWhite.png" alt="CGV" class="logo logo_white">
+            <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+            <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
           </div>
           <div class="logo_text">
             CURTULPLEX
@@ -186,7 +186,7 @@
             <div> 
                 <h3>No.1</h3>
                 <a href="${contextPath}/movie/remember.do">
-	                <img src="${contextPath}/teamproject/img/remember.jpg" alt="리멤버">
+	                <img src="${contextPath}/img/remember.jpg" alt="리멤버">
 	                <h4>리멤버</h4>
                  </a>
                 <p>예매율 23.6%</p>
@@ -196,7 +196,7 @@
             <div >
                 <h3>No.2</h3>
                 <a href="${contextPath}/movie/confession.do">
-	                <img src="${contextPath}/teamproject/img/conf.jpg" alt="자백">
+	                <img src="${contextPath}/img/conf.jpg" alt="자백">
 	                <h4>자백</h4>
                  </a>
                 <p>예매율 20.5%</p>
@@ -205,7 +205,7 @@
             </div>
             <div>
                 <h3>No.3</h3>
-                <img src="${contextPath}/teamproject/img/blackadam.jpg" alt="블랙아담">
+                <img src="${contextPath}/img/blackadam.jpg" alt="블랙아담">
                 <h4>블랙아담</h4>
                 <p>예매율 15.2%</p>
                 <p>2022.10.19 개봉</p>
@@ -213,7 +213,7 @@
             </div>
             <div >
                 <h3>No.4</h3>
-                <img src="${contextPath}/teamproject/img/evry.jpg" alt="에르비씽 에브리웨어 올 앳 원스">
+                <img src="${contextPath}/img/evry.jpg" alt="에르비씽 에브리웨어 올 앳 원스">
                 <h4>에르비씽 에브리웨어 올 앳 원스</h4>
                 <p>예매율 12.5%</p>
                 <p>2022.10.09 개봉</p>
@@ -221,7 +221,7 @@
             </div>
             <div >
                 <h3>No.5</h3>
-                <img src="${contextPath}/teamproject/img/highpass.jpg" alt="고속도로 가족">
+                <img src="${contextPath}/img/highpass.jpg" alt="고속도로 가족">
                 <h4>고속도로 가족</h4>
                 <p>예매율 10.3%</p>
                 <p>2022.11.02 개봉</p>
@@ -229,7 +229,7 @@
             </div>
             <div>
                 <h3>No.6</h3>
-                <img src="${contextPath}/teamproject/img/conan.jpg" alt="명탐정 코난 - 할로윈의 신부">
+                <img src="${contextPath}/img/conan.jpg" alt="명탐정 코난 - 할로윈의 신부">
                 <h4>명탐정 코난 - 할로윈의 신부</h4>
                 <p>예매율 7.1%</p>
                 <p>2022.10.28 재개봉</p>
@@ -237,7 +237,7 @@
             </div>
             <div>
                 <h3>No.7</h3>
-                <img src="${contextPath}/teamproject/img/gui.jpg" alt="귀못">
+                <img src="${contextPath}/img/gui.jpg" alt="귀못">
                 <h4>귀못</h4>
                 <p>예매율 5.3%</p>
                 <p>2022.10.19 개봉</p>
@@ -245,7 +245,7 @@
             </div>
             <div>
                 <h3>No.8</h3>
-                <img src="${contextPath}/teamproject/img/kongjo.jpg" alt="공조">
+                <img src="${contextPath}/img/kongjo.jpg" alt="공조">
                 <h4>공조</h4>
                 <p>예매율 4.1%</p>
                 <p>2022.09.07 개봉</p>
@@ -253,7 +253,7 @@
             </div>
             <div>
                 <h3>No.9</h3>
-                <img src="${contextPath}/teamproject/img/life.jpg" alt="인생은 아름다워">
+                <img src="${contextPath}/img/life.jpg" alt="인생은 아름다워">
                 <h4>인생은 아름다워</h4>
                 <p>예매율 1.4%</p>
                 <p>2022.09.28 개봉</p>

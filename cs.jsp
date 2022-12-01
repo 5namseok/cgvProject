@@ -43,7 +43,7 @@
     <title>고객센터</title>
 </head>
 <body>
-   <!-- HEADER -->
+  <!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->

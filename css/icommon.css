@@ -9,10 +9,6 @@
   margin: auto;
   position: relative;
 }
-.main_container {
-	margin:auto
-}
-
 li{
   list-style: none;
 }
@@ -60,12 +56,9 @@ header{
   flex-direction: column;
   margin-top: 30px;
 }
-
-/*
 .top_area .mem_info .hidden{
   display: none;
 }
-*/
 
 .top_area .mem_info i{
   width: 100%;
@@ -330,7 +323,7 @@ img{
   align-items: center;
   position: fixed;
   bottom: 30px;
-  right: 130px;
+  right: 60px;
   z-index: 9;
   transition: .3s;
 } 
@@ -338,4 +331,7 @@ img{
   width: 70px;
   height: 70px;
   font-size: 58px;
+}
+#to-top.hidden{
+  display: none;
 }
