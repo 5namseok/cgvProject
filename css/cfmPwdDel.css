@@ -14,16 +14,20 @@
   align-items: center;
 }
 .main_container h3,
-.main_container p {
+.main_container .alert {
   margin-bottom: 20px;
 }
-.main_container .input {
-  margin-top:20px;
-  margin: 5px;
-  padding: 0 10px;
-  height: 30px;
+.main_container .alert p {
+  margin-bottom: 3px;
 }
 .main_container .btn_cfm {
+  padding: 0 10px;
   height: 30px;
-  width: 70px;
+  width: 250px;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #fb4357;
+  cursor: pointer;
 }

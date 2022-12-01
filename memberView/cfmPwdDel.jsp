@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
-  <link rel="stylesheet" href="${contextPath}/css/cfmPwd.css">
+  <link rel="stylesheet" href="${contextPath}/css/cfmPwdDel.css">
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -244,7 +244,6 @@
         </div>
 	      <form action="${contextPath}/member/cfmPwdForm_del.do">
 	      	<input type="hidden" name="session_id" value="<%=session.getAttribute("id") %>">
-	        <input type="password"  class="input" name="pw" placeholder="비밀번호를 입력해주세요">
 	        <input type="submit" class="btn_cfm" value="회원탈퇴">
 	      </form>
 	    </div> <!-- //main_container -->

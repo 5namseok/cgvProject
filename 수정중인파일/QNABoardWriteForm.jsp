@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QNA Board Info</title>
+  <title>메인페이지</title>
   <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath }/css/icommon.css">
-  <link rel="stylesheet" href="${contextPath }/css/Q.css">
+  <link rel="stylesheet" href="./css/icommon.css">
+  <link rel="stylesheet" href="./css/Q.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -35,18 +36,18 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
+  <script src="./js/common.js" defer></script>
 </head>
 <body>
-	<!-- HEADER -->
+<!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            <img src="./image/logoRed.png" alt="CGV" class="logo logo_red">
+            <img src="./image/logoWhite.png" alt="CGV" class="logo logo_white">
           </div>
           <div class="logo_text">
             CURTULPLEX
@@ -174,57 +175,42 @@
       <div class="menu_bg"></div>
     </div>
   </header>
-
-  <!-- CONTAINER -->
-    <div class="container">
-    <div class="inner">
-		<table width = "600" border = "1" class="Qtable">
-		<caption>Q&A 게시글 보기</caption>
-			<tr height = "40">
-				<td width = "100" align ="center">글번호 </td>
-				<td width = "180" align ="left">${vo.qnum}</td>
-				<td width = "120" align ="center">조회수</td>
-				<td width = "180" align ="center">${vo.readcount}</td>
-			</tr>
-			
-			<tr height = "40">
-				<td width = "100" align ="center">아이디</td>
-				<td width = "180" align ="left">${vo.id}</td>
-				<td width = "120" align ="center">작성일 </td>
-				<td width = "180" align ="center">${vo.qdate}</td>
-			</tr>
+  
+    <!-- CONTAINER -->
+	 <div class="container">
+		 <div class="inner">
+			<form action = "${ctx}/QNAWriteProController.do" method = "post">
+				<table	width ="600" border = "1" class="Qtable">
+				<caption>Q&A 게시글 쓰기</caption>
+					<tr height="40">
+						<td align = "center" width ="150" bgcolor="#FAF4C0">아이디</td>
+						<td width="450">${sId}</td>
+					</tr>
+					
+					<tr height="40" class="subjectBox" >
+						<td align = "center" width ="150" bgcolor="#FAF4C0">제목</td>
+						<td width="450"><input type= "text" name = "qtitle" size = "60"></td>
+					</tr>
 				
-			<tr height = "40">
-				<td width = "120" align ="center">제목 </td>
-				<td colspan = "3" align ="center">${vo.qtitle}</td>
-			</tr>
-			
-			<tr height = "80">
-				<td width = "120" align ="center">글 내용 </td>
-				<td colspan = "3" align ="center">${vo.qcontent}</td>
-			</tr>
-			
-			<tr height = "40">
-				<td align ="center" colspan = "4">
-					<c:if test="${sId eq 'admin'}">
-						<input type="button" value="답글쓰기" 
-						onclick="location.href='${contextPath}/QNAReWriteController.do?qnum=${vo.qnum}&q_ref=${vo.q_ref}&q_re_step=${vo.q_re_step}&q_re_level=${vo.q_re_level}'" class="clickBox"> 
-					</c:if>  
-					<c:if test="${sId eq vo.id}">
-					<input type="button" value="수정하기" onclick="location.href='${contextPath}/QNAUpdateProController.do?qnum=${vo.qnum}'" class="clickBox"> 
-					</c:if>  
-					<c:if test="${sId eq vo.id}">
-						<input type="button" value="삭제하기" onclick="location.href='${contextPath}/QNADeleteController.do?qnum=${vo.qnum}'" class="clickBox"> 
-					</c:if>
-					<input type="button" value="목록보기" onclick="location.href='${contextPath}/QNAListController.do'" class="clickBox">     
-				</td>
-			</tr>
-	</table>
-	</div>
-	</div>
+					<tr height="40" class="contentBox"> 
+						<td align = "center" width ="150" bgcolor="#FAF4C0">글 내용</td>
+						<td width="450"><textarea rows= "10" cols = "57" name = "qcontent"></textarea></td>
+					</tr>
+					
+					<tr height="40">
+						<td align = "center" colspan = "2">
+							<input type="hidden" name="sId" value="${sId}">
+							<input type= "submit" value="글쓰기" class="clickBox">&nbsp;&nbsp;
+							<input type= "reset"  value="다시 작성" class="clickBox">&nbsp;&nbsp;
+							<input type="button" value="전체 게시글 보기" onclick="location.href='${ctx}/QNAListController.do'" class="clickBox">
+						</td>
+					</tr>
+				</table>		
+			</form>
+	  </div>
+  </div>
 	
-	
-  <!-- FOOTER -->
+	 <!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">

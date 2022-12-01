@@ -12,12 +12,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QNA 게시판</title>
+  <title>myCGV</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
 
-  <link rel="stylesheet" href="${contextPath}/css/memberPage.css">
+  <link rel="stylesheet" href="${contextPath}/css/management.css">
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -112,10 +112,6 @@
             </c:otherwise>
           </c:choose>
         </div> <!--  //div class="login_info" -->
-
-
-
-
         <div class="myCGV">
             <c:choose>
               <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
@@ -236,54 +232,43 @@
   </div>
 </header>
 
-
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
-	    <div class="main_container">
-        <!-- ***수정됨-->
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-              <h2>관리자 페이지</h2>
-          </c:when>
-          <c:otherwise>
-            <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
-          </c:otherwise>
-        </c:choose>
-
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-            <div class="modMember chk">
-              <a href="${contextPath}/member/management.do">회원관리</a>
-            </div>
-          </c:when>
-          <c:otherwise>
-            <div class="modMember chk">
-              <a href="${contextPath}/member/cfmPwdMod.do">회원정보수정•회원탈퇴 </a>
-            </div>
-          </c:otherwise>
-        </c:choose>
-	
-        <c:choose>
-          <c:when test="${sessionScope.id !='admin'}">
-            <div class="bookingList chk">
-              <p><a href="">예매내역 확인</a></p>
-            </div>
-          </c:when>
-        </c:choose>
-        <!-- ***수정됨-->
-
-	      <div class="QnA chk">
-	        <P><a href="${contextPath}/QNAListController.do">Q&A 확인</a></P>
-	      </div>
-	
-	    </div> <!-- //main_container -->
+	    <div class="manage_container">
+	      <h2>회원정보</h2>
+        <table>
+          <tr>
+            <th>회원번호</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>휴대폰 번호</th>
+            <th>생일</th>
+          </tr>
+          <c:choose>
+            <c:when test="${empty memberList }">
+              <tr>
+                <td colspan="6">등록된 회원이 없습니다.</td>
+              </tr>
+            </c:when>
+            <c:when test="${!empty memberList }">
+              <c:forEach var="member" items="${memberList }">
+                <tr>
+                  <td>${member.mno }</td>
+                  <td>${member.id }</td>
+                  <td>${member.name }</td>
+                  <td>${member.email }</td>
+                  <td>${member.hp }</td>
+                  <td>${member.birth }</td>
+                </tr>
+              </c:forEach>
+            </c:when>
+          </c:choose>
+        </table>
+	    </div>
     </div>
   </div>
-    
-  <main class="main_wrapper">
-
-  </main> <!-- //main_wrapper -->
 
   <!-- FOOTER -->
   <footer>

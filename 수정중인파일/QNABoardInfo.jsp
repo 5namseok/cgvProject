@@ -6,9 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QNA Board Info</title>
+  <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath }/css/icommon.css">
   <link rel="stylesheet" href="${contextPath }/css/Q.css">
@@ -35,18 +36,19 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
+  <script src="${contextPath }/js/common.js" defer></script>
+<title>Insert title here</title>
 </head>
 <body>
-	<!-- HEADER -->
+<!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            <img src="${contextPath }/image/logoRed.png" alt="CGV" class="logo logo_red">
+            <img src="${contextPath }/image/logoWhite.png" alt="CGV" class="logo logo_white">
           </div>
           <div class="logo_text">
             CURTULPLEX
@@ -210,10 +212,8 @@
 						<input type="button" value="답글쓰기" 
 						onclick="location.href='${contextPath}/QNAReWriteController.do?qnum=${vo.qnum}&q_ref=${vo.q_ref}&q_re_step=${vo.q_re_step}&q_re_level=${vo.q_re_level}'" class="clickBox"> 
 					</c:if>  
-					<c:if test="${sId eq vo.id}">
 					<input type="button" value="수정하기" onclick="location.href='${contextPath}/QNAUpdateProController.do?qnum=${vo.qnum}'" class="clickBox"> 
-					</c:if>  
-					<c:if test="${sId eq vo.id}">
+					<c:if test="${sId} EQ ${vo.id}">
 						<input type="button" value="삭제하기" onclick="location.href='${contextPath}/QNADeleteController.do?qnum=${vo.qnum}'" class="clickBox"> 
 					</c:if>
 					<input type="button" value="목록보기" onclick="location.href='${contextPath}/QNAListController.do'" class="clickBox">     

@@ -12,7 +12,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QNA 게시판</title>
+  <title>myCGV</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
@@ -48,6 +48,7 @@
   <script type="text/javascript" charset="utf-8">
 	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
   </script>
+  <title>QNA 게시판</title>
 </head>
 <body>
 <!-- 로그인하지않았을 경우 접근불가, 로그인 페이지로 이동하게 만들기 // 쿠키나 세션? -->
@@ -241,38 +242,20 @@
   <div class="container">
     <div class="inner">
 	    <div class="main_container">
-        <!-- ***수정됨-->
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-              <h2>관리자 페이지</h2>
-          </c:when>
-          <c:otherwise>
-            <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
-          </c:otherwise>
-        </c:choose>
-
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-            <div class="modMember chk">
-              <a href="${contextPath}/member/management.do">회원관리</a>
-            </div>
-          </c:when>
-          <c:otherwise>
-            <div class="modMember chk">
-              <a href="${contextPath}/member/cfmPwdMod.do">회원정보수정•회원탈퇴 </a>
-            </div>
-          </c:otherwise>
-        </c:choose>
+	      <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
+	        <!-- name부분 추후 수정 -->
+	      <div class="modMember chk">
+	        <a href="${contextPath}/member/cfmPwdMod.do">회원정보 수정 / </a>
+          <a href="${contextPath}/member/cfmPwdDel.do">회원 탈퇴</a>
+	      </div> <!-- modMember -->
 	
-        <c:choose>
-          <c:when test="${sessionScope.id !='admin'}">
-            <div class="bookingList chk">
-              <p><a href="">예매내역 확인</a></p>
-            </div>
-          </c:when>
-        </c:choose>
-        <!-- ***수정됨-->
-
+	      <div class="bookingList chk">
+	     	 <input type="hidden" name="_id" value="<%=session.getAttribute("id")%>">
+	        <p>
+	          <a href="${contextPath}/movie/ticketCheck.do?_id=<%=session.getAttribute("id")%>">MY 예매내역 확인</a>
+	        </p>
+	      </div>
+	
 	      <div class="QnA chk">
 	        <P><a href="${contextPath}/QNAListController.do">Q&A 확인</a></P>
 	      </div>

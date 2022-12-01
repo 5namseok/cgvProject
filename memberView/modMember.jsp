@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원정보 수정</title>
+  <title>회원정보 수정(TEST)</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
@@ -270,7 +270,13 @@
           </table> <!-- //modForm table -->
           <div class="btnModForm">
             <input type="submit" value="수정하기">
-            <input type="reset" value="다시 입력">
+            <input type="button" value="회원탈퇴" onclick="moveToWithdrawal(this.form)">
+            <script>
+            function moveToWithdrawal(obj) {
+            	   obj.action = contextPath + "/memberView/cfmPwdDel.jsp"
+            	   obj.submit();
+            	}
+            </script>
           </div> <!-- //btnModForm -->
         </form> <!-- //modForm -->
       </div> <!-- //main_page -->

@@ -1,26 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>����������</title>
+  <title>QNA 게시판</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
-  <!--���뿵�� CSS-->
+  <link rel="stylesheet" href="${contextPath}/css/Q.css">
+  <!--占쏙옙占쎈영占쏙옙 CSS-->
 
-  <!-- BOXICONE https://boxicons.com/ ����Ʈ���� �̸�Ƽ�� ������ �� ����-->
+  <!-- BOXICONE https://boxicons.com/ 占쏙옙占쏙옙트占쏙옙占쏙옙 占싱몌옙티占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙 占쏙옙占쏙옙-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!-- LODASH CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
     integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
     crossorigin="anonymous"></script>
-  <!-- GSAP CDN (javascript�� �ִϸ��̼� ȿ��)-->
+  <!-- GSAP CDN (javascript占쏙옙 占쌍니몌옙占싱쇽옙 효占쏙옙)-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
     integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
     crossorigin="anonymous"></script>
@@ -33,7 +37,7 @@
     integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
     crossorigin="anonymous"></script>
 
-  <!-- JAVA SCRIPT ���� -->
+  <!-- JAVA SCRIPT 占쏙옙占쏙옙 -->
   <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -42,7 +46,7 @@
 </head>
 
 <body>
-  <!-- HEADER -->
+ <!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
@@ -225,24 +229,25 @@
       <div class="menu_bg"></div>
     </div>
   </header>
-
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="inner">
-      <h2>Q&A �Խ���</h2>
-		<table width="700" border="1" bordercolor="gray">
-			<tr height = "40">
-				<td colspan="5" align="right">
-					<input type="button" value="�۾���" onclick="location.href ='${contextPath}/QNAWriteController.do'">
+ 
+ <!-- CONTAINER -->
+    <div class="container">
+        <div class="inner">
+		<table width="700" border="1" class="listTable">
+			<tr height = "40" align="right">
+				<td colspan="5" class="td_title">
+					<p>Q&A 게시판
+						<Button onclick="location.href ='${contextPath}/QNAWriteController.do'">글쓰기</Button>
+					</p>
 				</td>
 			</tr>
 			
 			<tr height = "40" bgcolor="#FAF4C0">
-				<td width = "50" align ="center">��ȣ </td>
-				<td width = "320" align ="center">����</td>
-				<td width = "100" align ="center">���̵� </td>
-				<td width = "150" align ="center">�ۼ��� </td>
-				<td width = "80" align ="center">��ȸ��</td>
+				<td width = "50" align ="center">번호 </td>
+				<td width = "320" align ="center">제목</td>
+				<td width = "100" align ="center">아이디 </td>
+				<td width = "150" align ="center">작성일 </td>
+				<td width = "80" align ="center">조회수</td>
 			</tr>
 			
 			<c:set var="number" value="${number}" />
@@ -265,47 +270,50 @@
 			<c:set var="number" value="${number-1}" />
 			</c:forEach>
 		</table>
-		
+	
+	<div class="paging">
 	<c:if test="${count>0}">
 		<c:if test="${blockStart > page}">
-			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart-page}">[����]</a>
+			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart-page}" class="pagingBA">[이전]</a>
 		</c:if>
 		<c:forEach var="i" begin="${blockStart}" end="${blockEnd}">
-				<a href="${contextPath}/QNAListController.do?pageNum=${i}" style ="text-decoration:none">[${i}]</a>
+				<a href="${contextPath}/QNAListController.do?pageNum=${i}" style ="text-decoration:none" class="pagingNum">[${i}]</a>
 		</c:forEach>
 		<c:if test="${blockEnd < pageCount}">
-			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart+page}">[����]</a>
+			<a href="${contextPath}/QNAListController.do?pageNum=${blockStart+page}" class="pagingBA">[다음]</a>
 		</c:if>
 	</c:if>
-    </div>
-  </div>
+	</div>
+	</div>
+	</div>
+	
 
-  <!-- FOOTER -->
+   <!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">
         <ul>
-          <li><a href="#">ȸ��Ұ�</a></li>
+          <li><a href="#">회사소개</a></li>
           <li><a href="#">IR</a></li>
-          <li><a href="#">ä������</a></li>
-          <li><a href="#">����/����/��������</a></li>
-          <li><a href="#">�̿���</a></li>
-          <li><a href="#">��������</a></li>
-          <li><a href="#">��������ó����ħ</a></li>
-          <li><a href="#">��������</a></li>
-          <li><a href="#">�̸����ּҹ��ܼ����ź�</a></li>
-          <li><a href="#">�����濵</a></li>
-          <li><a href="#">���̹������</a></li>
+          <li><a href="#">채용정보</a></li>
+          <li><a href="#">광고/제휴/출점문의</a></li>
+          <li><a href="#">이용약관</a></li>
+          <li><a href="#">편성기준</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">법적고지</a></li>
+          <li><a href="#">이메일주소무단수집거부</a></li>
+          <li><a href="#">윤리경영</a></li>
+          <li><a href="#">사이버감사실</a></li>
         </ul>
       </div>
     </div>
     <div class="company_info_wrap">
       <div class="inner">
         <div class="company_info">
-          <p>(04377)����Ư���� ��걸 �Ѱ���� 23�� 55, ����ī�Ƿ� 6��(�Ѱ��ε�)</p>
-          <p>��ǥ�̻� : ������ �� ����ڵ�Ϲ�ȣ : 123-45-678910 �� ����Ǹž��Ű���ȣ : 2017-������-0662 <a href="#">���������Ȯ��</a></p>
-          <p>ȣ���û���� : CJ�ø����Ʈ���� �� ����������ȣ å���� : ���ع� �� ��ǥ�̸��� : abcdefg@cj.net</p>
-          <p>�� CJ CGV. All Rights Reserved</p>
+          <p>(04377)서울특별시 용산구 한강대로 23길 55, 아피카므로 6층(한강로동)</p>
+          <p>대표이사 : 오남석 · 사업자등록번호 : 123-45-678910 · 통신판매업신고번호 : 2017-서울용산-0662 <a href="#">사업자정보확인</a></p>
+          <p>호스팅사업자 : CJ올리브네트웍스 · 개인정보보호 책임자 : 심준범 · 대표이메일 : abcdefg@cj.net</p>
+          <p>ⓒ CJ CGV. All Rights Reserved</p>
         </div>
       </div>
     </div>

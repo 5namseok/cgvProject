@@ -13,9 +13,6 @@
   flex-direction: column;
   align-items: center;
 }
-.main_container h2 {
-  margin: 20px 0;
-}
 .main_container .modMember {
   margin: 10px 0;
   background-color: rgb(230, 230, 230);
@@ -35,3 +32,4 @@
 .main_container .chk a {
   color: black;
 }
+

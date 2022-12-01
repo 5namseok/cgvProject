@@ -1,3 +1,5 @@
+console.log('common JS 연결')
+
 let head=document.querySelector('header');
 let con=document.querySelector('.container');
 const toTopEl = document.querySelector('#to-top'); 

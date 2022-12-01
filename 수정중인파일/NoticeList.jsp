@@ -1,17 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
+<html lang="eo">
 <head>
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QNA Board Info</title>
   <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath }/css/icommon.css">
-  <link rel="stylesheet" href="${contextPath }/css/Q.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/Q.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -35,49 +35,97 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
+  <script src="./js/common.js" defer></script>
+<title>공지사항 리스트</title>
 </head>
 <body>
-	<!-- HEADER -->
+<!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            <a href="${contextPath}/">
+              <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+              <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            </a>
           </div>
           <div class="logo_text">
             CURTULPLEX
           </div>
         </div>
         <div class="mem_info">
+          <c:choose>
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="mem_join">
+                <a href="${contextPath}/member/join.do">
+                  <i class='bx bx-user-plus'></i>
+                  <p>회원가입</p> <!--  -->
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="mem_join">
+                <%
+                  Object ID_get=session.getAttribute("id");
+                %>
+                <a href="#">
+                  <p><%=ID_get %>님<br> 환영합니다</p>
+                </a>
+              </div>
+
+            </c:otherwise>
+          </c:choose>
+
           <div class="login_info">
-            <div class="login">
-              <i class='bx bx-log-in-circle'></i>
-              <p>로그인</p>
-            </div>
-            <div class="logout hidden">
-              <i class='bx bx-log-out-circle'></i>
-              <p>로그아웃</p>
-            </div>
-          </div>
-          <div class="mem_join">
-            <i class='bx bx-user-plus'></i>
-            <p>회원가입</p>
-          </div>
+            <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <div class="login">
+                  <a href="${contextPath}/member/login.do">
+                    <i class='bx bx-log-in-circle'></i>
+                    <p>로그인</p>
+                  </a>
+                </div>
+              </c:when>
+              <c:otherwise>
+                <div class="logout">
+                  <a href="${contextPath}/member/logout.do">
+                    <i class='bx bx-log-out-circle'></i>
+                    <p>로그아웃</p>
+                  </a>
+                </div>
+              </c:otherwise>
+            </c:choose>
+          </div> <!--  //div class="login_info" -->
+
+
+
+
           <div class="myCGV">
-            <i class='bx bx-user'></i>
-            <p>MY CGV</p>
-          </div>
+              <c:choose>
+                <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                  <a href="${contextPath}/member/login.do">
+                </c:when>
+                <c:otherwise>
+                  <a href="${contextPath}/member/memberPage.do">
+                </c:otherwise>
+              </c:choose>
+              <i class='bx bx-user'></i>
+              <p>MY CGV</p>
+						</a>
+					</div>
+
+
           <div class="QNA">
-            <i class='bx bx-support'></i>
-            <p>고객센터</p>
+            <a href="${contextPath}/NoticeListCon.do">
+              <i class='bx bx-support'></i>
+              <p>고객센터</p>
+            </a>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- MENU & SEARCH 영역 -->
@@ -90,7 +138,7 @@
               <li>
                 <h3>영화</h3>
               </li>
-              <li><a href="#">무비차트</a></li>
+              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
               <li><a href="#">아트하우스</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
@@ -113,7 +161,7 @@
               <li>
                 <h3>예매</h3>
               </li>
-              <li><a href="#">빠른예매</a></li>
+              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
               <li><a href="#">상영스케줄</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
@@ -167,8 +215,8 @@
         </ul>
 
         <div class="search_menu">
-            <input type="text" name="search_bar" id="search_bar">
-            <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
+          <input type="text" name="search_bar" id="search_bar">
+          <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
         </div>
       </div>
       <div class="menu_bg"></div>
@@ -176,54 +224,54 @@
   </header>
 
   <!-- CONTAINER -->
-    <div class="container">
+  <div class="container">
     <div class="inner">
-		<table width = "600" border = "1" class="Qtable">
-		<caption>Q&A 게시글 보기</caption>
-			<tr height = "40">
-				<td width = "100" align ="center">글번호 </td>
-				<td width = "180" align ="left">${vo.qnum}</td>
-				<td width = "120" align ="center">조회수</td>
-				<td width = "180" align ="center">${vo.readcount}</td>
-			</tr>
-			
-			<tr height = "40">
-				<td width = "100" align ="center">아이디</td>
-				<td width = "180" align ="left">${vo.id}</td>
-				<td width = "120" align ="center">작성일 </td>
-				<td width = "180" align ="center">${vo.qdate}</td>
-			</tr>
+      	<table width="700" border="1"  class="listTable">
+		<tr height="40" align="right">
+			<td colspan="5" class="td_title">
+				<p>공지사항
+				<c:if test="${sId eq 'admin'}">
+				<button onclick="location.href='NoticeCreateCon.do'">글쓰기</button>
+				</c:if>
+				</p>
 				
-			<tr height = "40">
-				<td width = "120" align ="center">제목 </td>
-				<td colspan = "3" align ="center">${vo.qtitle}</td>
-			</tr>
-			
-			<tr height = "80">
-				<td width = "120" align ="center">글 내용 </td>
-				<td colspan = "3" align ="center">${vo.qcontent}</td>
-			</tr>
-			
-			<tr height = "40">
-				<td align ="center" colspan = "4">
-					<c:if test="${sId eq 'admin'}">
-						<input type="button" value="답글쓰기" 
-						onclick="location.href='${contextPath}/QNAReWriteController.do?qnum=${vo.qnum}&q_ref=${vo.q_ref}&q_re_step=${vo.q_re_step}&q_re_level=${vo.q_re_level}'" class="clickBox"> 
-					</c:if>  
-					<c:if test="${sId eq vo.id}">
-					<input type="button" value="수정하기" onclick="location.href='${contextPath}/QNAUpdateProController.do?qnum=${vo.qnum}'" class="clickBox"> 
-					</c:if>  
-					<c:if test="${sId eq vo.id}">
-						<input type="button" value="삭제하기" onclick="location.href='${contextPath}/QNADeleteController.do?qnum=${vo.qnum}'" class="clickBox"> 
-					</c:if>
-					<input type="button" value="목록보기" onclick="location.href='${contextPath}/QNAListController.do'" class="clickBox">     
-				</td>
-			</tr>
+				
+			</td>
+		</tr>
+		<tr height="40">
+			<td width="50" align="center">번호</td>
+			<td width="320" align="center">제목</td>
+			<td width="150" align="center">작성일</td>
+			<td width="80" align="center">조회수</td>
+		</tr>
+		<c:set var="number" value="${number}"/>
+		<c:forEach var="bean" items="${v}">
+		
+		<tr height="40">
+			<td width="50" align="center">${number}</td>
+			<td width="320" align="left"><a href='NoticeInfoCon.do?num=${bean.num}' class="subject">[${bean.num}] ${bean.subject}</a></td>
+			<td width="100" align="center">${bean.w_date}</td>
+			<td width="150" align="center">${bean.readcount}</td>
+		</tr>
+		<c:set var="number" value="${number-1}"/>
+		</c:forEach>
+	
 	</table>
-	</div>
-	</div>
-	
-	
+	<div class="paging">
+	<c:if test="${count>0}">
+		<c:if test="${blockStart > page}">
+			<a href="NoticeListCon.do?pageNum=${blockStart-page}" class="pagingBA">[이전]</a>
+		</c:if>
+		<c:forEach var="i" begin="${blockStart}" end="${blockEnd}">
+				<a href="NoticeListCon.do?pageNum=${i}" style ="text-decoration:none" class="pagingNum">[${i}]</a>
+		</c:forEach>
+		<c:if test="${blockEnd < pageCount}">
+			<a href="NoticeListCon.do?pageNum=${blockStart+page}" class="pagingBA" >[이후]</a>
+		</c:if>
+	</c:if>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="policy_list">
@@ -258,5 +306,8 @@
   <div id="to-top">
     <i class='bx bx-up-arrow-alt'></i>
   </div>
+
+	
+	
 </body>
 </html>
