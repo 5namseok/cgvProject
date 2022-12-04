@@ -23,7 +23,6 @@ for(int i=0; i<seatNum.length(); i++) {
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <link rel="stylesheet" href="${contextPath}/css/ticketComp.css">
@@ -245,7 +244,8 @@ for(int i=0; i<seatNum.length(); i++) {
   </header>
 
 
-<div class="ticketWrap">
+<div class="container">
+  <div class="ticketWrap">
     <h2>영화예매 내역</h2>
     <div class="ticket">
         <div class="ticketImg">
@@ -275,6 +275,7 @@ for(int i=0; i<seatNum.length(); i++) {
             <p>비회원 예매 하신경우는 예매내역이 이메일로 발송되지 않습니다.</p>
         </div>
     </div>
+</div>
 </div>
 
 <!-- FOOTER -->

@@ -25,17 +25,25 @@ let screen_list=screen_tbl.children[1].querySelectorAll('li');
 
 
 
+
 movie_list.forEach((movie)=>{
   movie.addEventListener('click',()=>{
-    movie.classList.toggle('target');
+    movie_list.forEach((v)=>{
+      v.classList.remove('target');
+    })
+    movie.classList.add('target');
     in_mo_hi.value=movie.innerText;
     in_movieTitle.innerHTML=movie.innerText;
+    in_movieIMG.innerHTML=`<img src=\"../img/${movie.innerText}.jpg\" alt=\"${movie.innerText}\">`;
   })
 })
 
 day_list.forEach((day)=>{
   day.addEventListener('click',()=>{
-    day.classList.toggle('target');
+    day_list.forEach((v)=>{
+      v.classList.remove('target')
+    })
+    day.classList.add('target');
     in_da_hi.value=day.innerText;
     in_date.innerHTML=day.innerText;
   })
@@ -43,7 +51,10 @@ day_list.forEach((day)=>{
 
 time_list.forEach((time)=>{
   time.addEventListener('click',()=>{
-    time.classList.toggle('target');
+    time_list.forEach((v)=>{
+      v.classList.remove('target')
+    })
+    time.classList.add('target');
     in_ti_hi.value=time.innerText;
     in_time.innerHTML=time.innerText;
   })
@@ -51,6 +62,9 @@ time_list.forEach((time)=>{
 
 screen_list.forEach((screen)=>{
   screen.addEventListener('click',()=>{
+    screen_list.forEach((v)=>{
+      v.classList.remove('target')
+    })
     screen.classList.toggle('target');
     in_sc_hi.value=screen.innerText;
     in_screen.innerHTML=screen.innerText;

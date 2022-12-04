@@ -1,13 +1,28 @@
+.container {
+    position: relative;
+    height: 750px;
+    background: linear-gradient(to top,
+            rgba(255, 255, 255, 0) 10%,
+            rgba(255, 255, 255, 0.5) 25%,
+            rgba(255, 255, 255, 0.7) 50%,
+            rgba(255, 255, 255, 1) 75%,
+            rgba(255, 255, 255, 1) 100%),
+        url(../img/ticketBG2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
 
-.ticketWrap{
+.ticketWrap {
     width: 980px;
     height: 650px;
     margin: 0 auto;
-    background-color: #F6F6F6;
+    background-color: rgba(246, 246, 246, .8);
     margin-top: 50px;
     margin-bottom: 50px
 }
-.ticketWrap h2{
+
+.ticketWrap h2 {
     text-align: center;
     background-color: #fb4357;
     color: #fff;
@@ -15,28 +30,27 @@
 
 }
 
-.ticket{
+.ticket {
     width: 600px;
     height: 300px;
     margin: 0 auto;
     display: flex;
     flex-wrap: wrap
-
 }
 
 
-.ticketImg{
+.ticketImg {
     width: 250px;
     height: 300px;
 }
 
-.ticketImg img{
+.ticketImg img {
     width: 250px;
     height: 300px;
 }
 
 
-.main p{
+.main p {
     margin-left: 50px;
     margin-bottom: 25px;
     display: inline-block;
@@ -44,15 +58,15 @@
     font-weight: bold;
 }
 
-.main span{
+.main span {
     font-weight: bold;
 }
 
-.btn{
+.btn {
     text-align: center;
 }
 
-.btn button{
+.btn button {
     text-align: center;
     margin-top: 50px;
     width: 200px;
@@ -65,33 +79,34 @@
     border-radius: 10px;
 }
 
-.btn a:link{ /*링크 방문 전 글꼴*/
+.btn a:link {
+    /*링크 방문 전 글꼴*/
     color: #fff;
     text-decoration: none;
 }
-.btn a:visited{ /*링크 방문 후 글꼴*/
+
+.btn a:visited {
+    /*링크 방문 후 글꼴*/
     color: #fff;
     text-decoration: none;
 }
-.line{
+
+.line {
     width: 650px;
     border-top: 1px solid #ccc;
     margin: 0 auto;
     margin-top: 30px;
 }
 
-.note{
+.note {
     margin-left: 20%;
     margin-top: 20px;
     display: flex;
-    
+
 }
-.content{
+
+.content {
     margin-left: 50px;
     color: #5D5D5D;
     font-size: 0.9em;
 }
-
-
-
-

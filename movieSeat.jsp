@@ -78,7 +78,6 @@ window.onload = function(){
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="${contextPath}/js/movieSeat.js" defer></script>
@@ -271,110 +270,129 @@ window.onload = function(){
     </div>
   </header>
 
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="book_info">
-      <div class="movie_info">
-        <span class="movie_title"><%=mvTitle%></span>
-      </div>
-      <div class="time_info">
-        <span>일시 : </span>
-        <span class="day"><%=showingDate%></span><br>
-        <span>시간 : </span>
-        <span class="time"><%=showingTime%></span>
-      </div>
-    </div>
-    <div class="Count">
-      <span>인원수 선택</span>
-      <div class="Count_con">
-        <div class="adult">
-          <label for="AdultCount">성인</label>
-          <input type="number" name="AdultCount" id="AdultCount" max="3" min="0" value="0">
-        </div>
-        <div class="children">
-          <label for="childrenCount">어린이</label>
-          <input type="number" name="childrenCount" id="childrenCount" max="2" min="0" value="0">
-        </div>
-      </div>
-      
-    </div>
-
-    <div class="seatTitle">
-      좌석선택  
-    </div>
+  <div class="ticket">
+    <div class="inner">
+      <!-- CONTAINER -->
+      <div class="container">
+        <div class="seat_con">
+          <div class="info_box">
+            <div class="book_info">
+              <div class="img_box">
     
-    <table class="seat">
-      <th colspan="5"><span>스크린</span></th>
-      <tr>
-        <td class="null">A1</td>
-        <td class="null">A2</td>
-        <td class="null">A3</td>
-        <td class="null">A4</td>
-        <td class="null">A5</td>
-      </tr>
-      <tr>
-        <td class="null">B1</td>
-        <td class="null">B2</td>
-        <td class="null">B3</td>
-        <td class="null">B4</td>
-        <td class="null">B5</td>
-      </tr>
-      <tr>
-        <td class="null">C1</td>
-        <td class="null">C2</td>
-        <td class="null">C3</td>
-        <td class="null">C4</td>
-        <td class="null">C5</td>
-      </tr>
-    </table>
-  </div>
-
-  <div class="btn_con">
-    <div class="pageMoveBtn"><a href="${contextPath}/movieChart.jsp">영화리스트</a></div>
-    <div class="pageMoveBtn payment">결제하기</div>
-  </div>
-
-</div>
-
-<div class="goNext">
-  <div class="inner">
-    <div class="info">
-      <div class="info movie">
-        <span class="movie_poster">
-          <!-- <img src="./image/001.jpg" alt="리멤버"> -->
-        </span>
-        <div class="row movie_title">
-          <span><%=mvTitle%></span>
+              </div>
+              <div class="text_box">
+                <div class="movie_info">
+                  <span class="movie_title"><%=mvTitle%></span>
+                </div>
+                <div class="time_info">
+                  <span>일시 : </span>
+                  <span class="day"><%=showingDate%></span><br>
+                  <span>시간 : </span>
+                  <span class="time"><%=showingTime%></span>
+                </div>
+              </div>
+            </div>
+            <div class="Count">
+              <span>인원수 선택</span>
+              <div class="Count_con">
+                <div class="adult">
+                  <label for="AdultCount">성인</label>
+                  <input type="number" name="AdultCount" id="AdultCount" max="3" min="0" value="0">
+                </div>
+                <div class="children">
+                  <label for="childrenCount">어린이</label>
+                  <input type="number" name="childrenCount" id="childrenCount" max="2" min="0" value="0">
+                </div>
+              </div>
+              
+            </div>
+          </div>
+  
+          <div class="seat_box">
+            <div class="seatTitle">
+              좌석선택  
+            </div>
+            
+            <table class="seat">
+              <th colspan="5"><span>스크린</span></th>
+              <tr>
+                <td class="null">A1</td>
+                <td class="null">A2</td>
+                <td class="null">A3</td>
+                <td class="null">A4</td>
+                <td class="null">A5</td>
+              </tr>
+              <tr>
+                <td class="null">B1</td>
+                <td class="null">B2</td>
+                <td class="null">B3</td>
+                <td class="null">B4</td>
+                <td class="null">B5</td>
+              </tr>
+              <tr>
+                <td class="null">C1</td>
+                <td class="null">C2</td>
+                <td class="null">C3</td>
+                <td class="null">C4</td>
+                <td class="null">C5</td>
+              </tr>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="target info">
-        <div class="row date">
-          <span>일시</span>
-          <span class="date"><%=showingDate%></span>
-          <span class="time"><%=showingTime%></span>
         </div>
-        <div class="row screen">
-          <span><%=theater%></span>
-          <span class="screen"></span>
-        </div>
-      </div>
-      <div class="row colspan">
-        <span class="path_step1">>좌석선택</span>
-        <span class="path_step2">>결제</span>
-      </div>
+
+
     </div>
 
+    <div class="goNext">
+      <div class="inner">
+        <div class="info">
+          <div class="info movie">
+            <span class="movie_poster">
+              
+            </span>
+            <div class="row movie_title">
+              <span><%=mvTitle%></span>
+            </div>
+          </div>
+          <div class="target info">
+            <div class="row date">
+              <span>일시</span>
+              <span class="date"><%=showingDate%></span>
+              <span class="time"><%=showingTime%></span>
+            </div>
+            <div class="row screen">
+              <span>상영관 </span>
+              <span><%=theater%></span>
+              <span class="screen"></span>
+            </div>
+          </div>
+          <div class="row colspan">
+            <span class="path_step1">>좌석선택</span>
+          </div>
+          <div class="btn_con">
+            <a class="movieSeatBtn" >
+              <div id="seat_btn">
+                <i class='bx bx-chevrons-right'></i><br>
+                <span>예매하기</span>
+              </div>
+            </a>
+          </div>
+        </div>
 
-    <form action="ticketComp.do">
-	  <input type="hidden" name="id" id="id" value="<%=ID_get %>">
-      <input type="hidden" name="mvTitle" id="movie_title" value="<%=mvTitle%>">
-      <input type="hidden" name="theater" id="screen" value="<%=theater%>">
-      <input type="hidden" name="showingDate" id="date" value="<%=showingDate%>">
-      <input type="hidden" name="showingTime" id="time" value="<%=showingTime%>">
-      <input type="hidden" name="seatNum" id="seatNum">
-      <input type="hidden" name="bookNum" id="bookNum">
-      <input type="button" id="seat_btn" value="좌석선택">
-    </form>
+
+        <form action="ticketComp.do">
+        <input type="hidden" name="id" id="id" value="<%=ID_get %>">
+          <input type="hidden" name="mvTitle" id="movie_title" value="<%=mvTitle%>">
+          <input type="hidden" name="theater" id="screen" value="<%=theater%>">
+          <input type="hidden" name="showingDate" id="date" value="<%=showingDate%>">
+          <input type="hidden" name="showingTime" id="time" value="<%=showingTime%>">
+          <input type="hidden" name="seatNum" id="seatNum">
+          <input type="hidden" name="bookNum" id="bookNum">
+          <!-- <input type="button" id="seat_btn" value="좌석선택"> -->
+        </form>
+      </div>
+    </div>
   </div>
   <!-- FOOTER -->
   <footer>
@@ -407,9 +425,6 @@ window.onload = function(){
     </div>
   </footer>
 
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
   
 </body>
 </html>

@@ -40,5 +40,12 @@ seat_btn.addEventListener('click',()=>{
   }
 })
 
+// 영화 포스터 이미지 넣기
+let movie_title=document.querySelector('.movie_title').innerText;
+let img_box=document.querySelector('.img_box');
+let movie_poster=document.querySelector('.movie_poster');
 
-
+window.onload=()=>{
+  img_box.innerHTML=`<img src=\"../img/${movie_title}.jpg\">`
+  movie_poster.innerHTML =`<img src=\"../img/${movie_title}.jpg\">`
+}

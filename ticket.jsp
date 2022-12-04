@@ -67,7 +67,6 @@
 		crossorigin="anonymous"></script>
 
 	<!-- JAVA SCRIPT 연결 -->
-	<script src="${contextPath}/js/common.js" defer></script>
 	<script src="${contextPath}/js/members.js" defer></script>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="${contextPath}/js/ticket.js" defer></script>
@@ -259,23 +258,14 @@
   </header>
 
 
-	<!-- <div class="inner">
-    <div class="memInfo">
-      <input type="button" value="로그아웃" class="memInfobtn">
-      <input type="button" value="마이페이지" class="memPagebtn">
-    </div>
-    
-    <div class="title">
-      <span class="title_left">예매</span>
-      <span class="title_img"><i class='bx bx-camera-movie'></i></span>
-      <span class="title_right">영화정보</span>
-    </div>
 
 
-	<!-- 콘테이너 -->
-
-	<div class="container">
-		<div class="movie_tbl tbl_con">
+<!-- 클래스 명 수정 -->
+  <div class="ticket">
+    <div class="inner">
+      <!-- 콘테이너 -->
+      <div class="container">
+        <div class="movie_tbl tbl_con">
 			<span class="">영화선택</span>
 			<ul>
 				<li><a href="#">${mvInfoList[0].mvTitle}</a></li>
@@ -308,45 +298,46 @@
 				<li><a href="#">${mvInfoList[5].showingTime}</a></li>
 			</ul>
 		</div>
-	</div>
+      </div>
+    </div>
 
-	<div class="btn_con">
-		<a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
-		<a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
-	</div>
-	</div>
+    <div class="goNext">
+      <div class="inner">
+        <div class="info">
+          <div class="info movie">
+            <span class="movie_poster">
+            </span>
+            <div class="row movie_title">
+              <span></span>
+            </div>
+          </div>
+          <div class="target info">
+            <div class="row date">
+              <span>일시 : </span>
+              <span class="date"></span>
+              <span class="time"></span>
+            </div>
+            <div class="row screen">
+              <span>상영관 : </span>
+              <span class="screen"></span>
+            </div>
+          </div>
+          <div class="row colspan">
+            <span class="path_step1">>좌석선택</span>
+          </div>
+          <div class="btn_con">
+            <a class="movieSeatBtn" >
+              <div class="btn" onclick="fn_ticket()">
+                <i class='bx bx-chevrons-right'></i><br>
+                <span>좌석 선택하기</span>
+              </div>
+            </a>
+          </div>
+          <!-- btn_con 위치수정 -->
+        </div>
 
-	<div class="goNext">
-		<div class="inner">
-			<div class="info">
-				<div class="info movie">
-					<span class="movie_poster">
-						<!-- <img src="./image/001.jpg" alt="리멤버"> -->
-					</span>
-					<div class="row movie_title">
-						<span></span>
-					</div>
-				</div>
-				<div class="target info">
-					<div class="row date">
-						<span>일시</span>
-						<span class="date"></span>
-						<span class="time"></span>
-					</div>
-					<div class="row screen">
-						<span>상영관</span>
-						<span class="screen"></span>
-					</div>
-				</div>
-				<div class="row colspan">
-					<span class="path_step1">>좌석선택</span>
-					<span class="path_step2">>결제</span>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<form name="frmMovie">
+        <form name="frmMovie">
 		<%
                   Object ID_get=session.getAttribute("id");
                 %>
@@ -355,8 +346,13 @@
 		<input type="hidden" name="theater" id="screen">
 		<input type="hidden" name="showingDate" id="date">
 		<input type="hidden" name="showingTime" id="time">
-		<input type="button" value="좌석선택" onclick="fn_ticket()">
-	</form>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+
 
 
 	<!-- FOOTER -->
@@ -389,10 +385,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<div id="to-top">
-		<i class='bx bx-up-arrow-alt'></i>
-	</div>
 </body>
 
 </html>
