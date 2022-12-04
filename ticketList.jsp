@@ -1,19 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+<%
+request.setCharacterEncoding("utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>메인페이지</title>
+<title>예매내역</title>
+<script type="text/javascript">
+function fn_delTicket() {
+	alert("예매가 취소 되었습니다");
+}
+</script>
+
+
   <!-- CSS LINK -->
-  <link rel="stylesheet" href="./css/icommon.css">
-  <link rel="stylesheet" href="./css/Q.css">
-  <!--공통영역 CSS-->
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+<link rel="stylesheet" href="${contextPath}/css/ticketList.css">
+
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -34,11 +46,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
     integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
     crossorigin="anonymous"></script>
-
+    
+    
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script>
+  <script src="${contextPath}/js/common.js" defer></script>
 </head>
 <body>
+
 <!-- HEADER -->
   <header>
     <div class="inner">
@@ -46,39 +60,86 @@
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <img src="./image/logoRed.png" alt="CGV" class="logo logo_red">
-            <img src="./image/logoWhite.png" alt="CGV" class="logo logo_white">
+            <a href="${contextPath}/">
+              <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
+              <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            </a>
           </div>
           <div class="logo_text">
             CURTULPLEX
           </div>
         </div>
         <div class="mem_info">
+          <c:choose>
+            <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+              <div class="mem_join">
+                <a href="${contextPath}/member/join.do">
+                  <i class='bx bx-user-plus'></i>
+                  <p>회원가입</p> <!--  -->
+                </a>
+              </div>
+            </c:when>
+            <c:otherwise>
+              <div class="mem_join">
+                <%
+                  Object ID_get=session.getAttribute("id");
+                %>
+                <a href="#">
+                  <p><%=ID_get %>님<br> 환영합니다</p>
+                </a>
+              </div>
+
+            </c:otherwise>
+          </c:choose>
+
           <div class="login_info">
-            <div class="login">
-              <i class='bx bx-log-in-circle'></i>
-              <p>로그인</p>
-            </div>
-            <div class="logout hidden">
-              <i class='bx bx-log-out-circle'></i>
-              <p>로그아웃</p>
-            </div>
-          </div>
-          <div class="mem_join">
-            <i class='bx bx-user-plus'></i>
-            <p>회원가입</p>
-          </div>
+            <!-- 로그인/비로그인 상태에 따라 다르게 보이게 -->
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <div class="login">
+                  <a href="${contextPath}/member/login.do">
+                    <i class='bx bx-log-in-circle'></i>
+                    <p>로그인</p>
+                  </a>
+                </div>
+              </c:when>
+              <c:otherwise>
+                <div class="logout">
+                  <a href="${contextPath}/member/logout.do">
+                    <i class='bx bx-log-out-circle'></i>
+                    <p>로그아웃</p>
+                  </a>
+                </div>
+              </c:otherwise>
+            </c:choose>
+          </div> <!--  //div class="login_info" -->
+
+
+
+
           <div class="myCGV">
-            <i class='bx bx-user'></i>
-            <p>MY CGV</p>
-          </div>
+              <c:choose>
+                <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                  <a href="${contextPath}/member/login.do">
+                </c:when>
+                <c:otherwise>
+                  <a href="${contextPath}/member/memberPage.do">
+                </c:otherwise>
+              </c:choose>
+              <i class='bx bx-user'></i>
+              <p>MY CGV</p>
+						</a>
+					</div>
+
+
           <div class="QNA">
-            <i class='bx bx-support'></i>
-            <p>고객센터</p>
+            <a href="${contextPath}/csCon.do">
+              <i class='bx bx-support'></i>
+              <p>고객센터</p>
+            </a>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- MENU & SEARCH 영역 -->
@@ -91,7 +152,7 @@
               <li>
                 <h3>영화</h3>
               </li>
-              <li><a href="#">무비차트</a></li>
+              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
               <li><a href="#">아트하우스</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
@@ -114,7 +175,7 @@
               <li>
                 <h3>예매</h3>
               </li>
-              <li><a href="#">빠른예매</a></li>
+              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
               <li><a href="#">상영스케줄</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
@@ -168,49 +229,67 @@
         </ul>
 
         <div class="search_menu">
-            <input type="text" name="search_bar" id="search_bar">
-            <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
+          <input type="text" name="search_bar" id="search_bar">
+          <div class="search_btn"><i class='bx bx-search-alt-2'></i></div>
         </div>
       </div>
       <div class="menu_bg"></div>
     </div>
   </header>
-  
-    <!-- CONTAINER -->
-	 <div class="container">
-		 <div class="inner">
-			<form action = "${ctx}/QNAWriteProController.do" method = "post">
-				<table	width ="600" border = "1" class="Qtable">
-				<caption>Q&A 게시글 쓰기</caption>
-					<tr height="40">
-						<td align = "center" width ="150" bgcolor="#FAF4C0">아이디</td>
-						<td width="450">${sId}</td>
-					</tr>
-					
-					<tr height="40" class="subjectBox" >
-						<td align = "center" width ="150" bgcolor="#FAF4C0">제목</td>
-						<td width="450"><input type= "text" name = "qtitle" size = "60"></td>
-					</tr>
+
+<div class="container">
+	<div class="inner">
+		<h2>영화예매 내역</h2>
+  <c:forEach var="ticketList" items="${ticketList}">
+  <div class="ticketWrap">
+		<div class="ticket">
+	        <div class="ticketImg">
+	            <img src="${contextPath}/img/${ticketList.mvTitle}.jpg" alt="영화포스터">
+	            
+	        </div>
+	        <div class="main">
+	        	<!-- 좌석번호 콤마(,) 제거  -->
+	        	<c:set var="seat" value="${ticketList.seatNum}"/> 
+				<c:set var="seatNum" value="${fn:replace(seat, ',', ' ')}" />
+				<!-- 좌석 인원수 세기  -->
+				<c:forEach var="count1" items="${ticketList.seatNum}" varStatus="status" >
+					<c:set var="count2" value="${status.count}"/>
+				</c:forEach>
 				
-					<tr height="40" class="contentBox"> 
-						<td align = "center" width ="150" bgcolor="#FAF4C0">글 내용</td>
-						<td width="450"><textarea rows= "10" cols = "57" name = "qcontent"></textarea></td>
-					</tr>
-					
-					<tr height="40">
-						<td align = "center" colspan = "2">
-							<input type="hidden" name="sId" value="${sId}">
-							<input type= "submit" value="글쓰기" class="clickBox">&nbsp;&nbsp;
-							<input type= "reset"  value="다시 작성" class="clickBox">&nbsp;&nbsp;
-							<input type="button" value="전체 게시글 보기" onclick="location.href='${ctx}/QNAListController.do'" class="clickBox">
-						</td>
-					</tr>
-				</table>		
-			</form>
-	  </div>
+	            <p>예매번호:</p>  <span>${ticketList.bookNum}</span><br>
+	            <p>관람영화:</p> <span>${ticketList.mvTitle}</span><br>
+	            <p>관람일:</p> <span>${ticketList.showingDate}</span><br>
+	            <p>관람시간:</p> <span>${ticketList.showingTime}</span><br>
+	            <p>상영관:</p> <span>${ticketList.showingTime}</span><br>
+	            <p>관람인원:</p> <span>${count2}명</span><br>
+	           	<p>관람좌석:</p> <span>${seatNum}</span> 
+	        </div>
+	        <div class="btnDel">
+				<button>
+					<a href="${contextPath}/movie/delTicket.do?bookNum=${ticketList.bookNum}
+					&_id=<%=session.getAttribute("id")%>" onclick="fn_delTicket()">예매취소</a>
+				</button>
+         	</div>
+	    </div>
   </div>
-	
-	 <!-- FOOTER -->
+  </c:forEach>
+	<div class="line"></div>
+		    <div class="note">
+		        <div>예매 유의사항</div>
+		        <div class="content">
+		            <p>CJ ONE포인트는 상영일 익일 적립됩니다.(영화관람권 제외)</p>
+		            <p>홈티켓 출력 시, 별도의 티켓발권 없이 바로입장 가능합니다.</p>
+		            <p>영화상영 스케줄은 영화관 사정에 의해 변경될수 있습니다.</p>
+		            <p>비회원 예매 하신경우는 예매내역이 이메일로 발송되지 않습니다.</p>
+		        </div>
+		    </div>
+    <div class="btnHome">
+       <button><a href="${contextPath}/">홈으로</a></button> 
+    </div>
+	</div>
+</div>
+
+<!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">
@@ -240,9 +319,5 @@
       </div>
     </div>
   </footer>
-
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
 </body>
 </html>

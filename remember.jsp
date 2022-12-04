@@ -237,82 +237,82 @@
   <div class="container">
     <div class="inner">
       <div class="mvInfo">
-          <div class="img_box">
-              <img src="${contextPath}/img/remember.jpg" alt="리멤버" >
-          </div>
-          <div class="con_box">
-              <div class="con_title">
-                  <h2>${movieList[0].mvTitle}</h2><!--DB생성 및 연결 후 mvtitle로 대체-->
-                  <span>현재상영중</span>
-                  <p>REMEMBER</p>
-              </div> 
-              <div class="con_score">
-                  <p>예매율 23.6%</p> <!--필요여부-->
-              </div> 
-              <div class="con_spec">
-                  <p>감독 : 이일형 / 배우 : 이성민, 남주혁</p> 
-                  <p>장르 : 드라마 / 기본 : 15, ${movieList[0].runTime}, 한국</p> <!--DB생성 및 연결 후 러닝타임 부분 runtime으로 대체-->
-                  <p>개봉 : <fmt:formatDate value="${movieList[0].openDate}" pattern="yyyy.MM.dd"/></p> <!--DB생성 및 연결 후 opendate로 대체-->
-              </div> 
-              <div class="con_tiket">
-                   <a href="${contextPath}/movie/rememberTicket.do"><input type="button" value="예매하기"></a>
-              </div> 
-          </div>
-      </div>
-      <div class="detail">
-          <ul class="tap">
-              <li><a href="#mvContent">주요정보</a></li>
-              <li><a href="#trailer">트레일러</a></li>
-              <li><a href="#still">스틸컷</a></li>
-              <li><a href="#">평점/리뷰</a></li> <!--필요여부?-->
-              <li><a href="#">상영시간표</a></li>
-          </ul>
-          <div id="mvContent"> <!--DB생성 및 연결 후 mvcontent로 대체-->
-              <p>${movieList[0].mvContent}</p>
-          </div>
+            <div class="img_box">
+                <img src="${contextPath}/img/remember.jpg" alt="리멤버" >
+            </div>
+            <div class="con_box">
+                <div class="con_title">
+                    <h2>${movieList[0].mvTitle}</h2><!--DB생성 및 연결 후 mvtitle로 대체-->
+                    <span>현재상영중</span>
+                    <p>REMEMBER</p>
+                </div> 
+                <div class="con_score">
+                    <p>예매율 23.6%</p> <!--필요여부-->
+                </div> 
+                <div class="con_spec">
+                    <p>감독 : 이일형 / 배우 : 이성민, 남주혁</p> 
+                    <p>장르 : 드라마 / 기본 : 15, ${movieList[0].runTime}, 한국</p> <!--DB생성 및 연결 후 러닝타임 부분 runtime으로 대체-->
+                    <p>개봉 : <fmt:formatDate value="${movieList[0].openDate}" pattern="yyyy.MM.dd"/></p> <!--DB생성 및 연결 후 opendate로 대체-->
+                </div> 
+                <div class="con_tiket">
+                     <a href="${contextPath}/movie/rememberTicket.do"><input type="button" value="예매하기"></a>
+                </div> 
+            </div>
+        </div>
+        <div class="detail">
+            <ul class="tap">
+                <li><a href="#mvContent">주요정보</a></li>
+                <li><a href="#trailer">트레일러</a></li>
+                <li><a href="#still">스틸컷</a></li>
+                <li><a href="#">평점/리뷰</a></li> <!--필요여부?-->
+                <li><a href="#">상영시간표</a></li>
+            </ul>
+            <div id="mvContent"> <!--DB생성 및 연결 후 mvcontent로 대체-->
+                <p>${movieList[0].mvContent}</p>
+            </div>
 
-          <div id="trailer">
-              <h3>트레일러</h3>
-              <div class="trailerBox">
-                  <div>
-                      <video src="${contextPath}/img/remember_tr1.mp4" autoplay controls></video>
-                      <p>제작기 영상</p>
-                  </div>
-                  <div>
-                      <video src="${contextPath}/img/remember_tr2.mp4" autoplay controls></video>
-                      <p>1차 예고편</p>
-                  </div>
-                  <div>
-                      <video src="${contextPath}/img/remember_tr3.mp4" autoplay controls></video>
-                      <p>2차 예고편</p>
-                  </div>
-              </div>
-          </div>
+            <div id="trailer">
+                <h3>트레일러</h3>
+                <div class="trailerBox">
+                    <div>
+                        <video src="${contextPath}/img/remember_tr1.mp4" controls></video>
+                        <p>제작기 영상</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/img/remember_tr2.mp4" controls></video>
+                        <p>1차 예고편</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/img/remember_tr3.mp4" controls></video>
+                        <p>2차 예고편</p>
+                    </div>
+                </div>
+            </div>
 
-          <div id="still">
-                  <h3>스틸컷</h3>
-              <div class="slide">
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut1.jpg" alt="스틸컷1">
-                  </div>
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut2.jpg" alt="스틸컷2">
-                  </div>
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut3.jpg" alt="스틸컷3">
-                  </div>
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut4.jpg" alt="스틸컷4">
-                  </div>
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut5.jpg" alt="스틸컷5">
-                  </div>
-                  <div class="slide_img">
-                      <img src="${contextPath}/img/remember_stillcut6.jpg" alt="스틸컷6">
-                  </div>
-              </div>
-          </div>
-      </div>
+            <div id="still">
+                    <h3>스틸컷</h3>
+                <div class="slide">
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut1.jpg" alt="스틸컷1">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut2.jpg" alt="스틸컷2">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut3.jpg" alt="스틸컷3">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut4.jpg" alt="스틸컷4">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut5.jpg" alt="스틸컷5">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut6.jpg" alt="스틸컷6">
+                    </div>
+                </div>
+            </div>
+        </div>
   </div>
   </div>
     

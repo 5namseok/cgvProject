@@ -53,18 +53,19 @@
 	    to bottom,
 	    rgba(255,255,255,0) 10%,
 	    rgba(255,255,255, 0.5) 25%,
-	    rgba(255,255,255,0.7) 40%,
-	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,0.7) 50%,
 	    rgba(255,255,255,1) 75%,
 	    rgba(255,255,255,1) 100%
 	  ),
 	  url(../img/cgvBG1.jpg);
 	  background-repeat: no-repeat;
 	  background-size: cover;
-	  weight:100%;
-	  height:50%;
-	  padding-top:200px;
+	  height:600px;
+	  padding-top:100px;
 	  z-index:-1;
+	}
+	.login_container {
+		background:rgba(255,255,255,.5);		
 	}
   </style>
 </head>

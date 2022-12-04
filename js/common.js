@@ -2,9 +2,6 @@ let head=document.querySelector('header');
 let con=document.querySelector('.container');
 const toTopEl = document.querySelector('#to-top'); 
 
-if(document.body.scrollHeight<window.innerHeight){
-  toTopEl.classList.add('hidden')
-}
 
 window.addEventListener('scroll',_.throttle(()=>{
   if(window.scrollY>110) {

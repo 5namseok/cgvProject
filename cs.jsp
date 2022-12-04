@@ -51,8 +51,7 @@
 	  url(./img/cgvBG1.jpg);
 	  background-repeat: no-repeat;
 	  background-size: cover;
-	  weight:100%;
-	  height:50%;
+	  height:600px;
 	  padding-top:200px;
 	  z-index:-1;
 	}

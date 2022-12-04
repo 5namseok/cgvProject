@@ -2,51 +2,69 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%
 	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <link rel="stylesheet" href="${contextPath}/css/common2.css">
   <link rel="stylesheet" href="${contextPath}/css/ticket.css">
-<title>예매하기</title>
-<script type="text/javascript">
+    <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>예매하기</title>
+  <script type="text/javascript">
+    function fn_ticket() {
+      let frmMovie = document.frmMovie;
+      let mvTitle = frmMovie.mvTitle.value;
+      let theater = frmMovie.theater.value;
+      let showingDate = frmMovie.showingDate.value;
+      let showingTime = frmMovie.showingTime.value;
 
-
-function fn_ticket() {
-		let frmMovie=document.frmMovie;
-		let mvTitle = frmMovie.mvTitle.value;
-		let theater = frmMovie.theater.value;
-		let showingDate = frmMovie.showingDate.value;
-		let showingTime = frmMovie.showingTime.value;
-		
-		if(mvTitle.length == 0 || mvTitle == ""){
-			alert("영화를 선택해주세요")
-		}else if(showingDate.length == 0 || showingDate == ""){
-			alert("날짜를 선택해주세요")
-		}else if(theater.length == 0 || theater == ""){
-			alert("상영관을 선택해주세요")
-		}else if(showingTime.length == 0 || showingTime == ""){
-			alert("시간을 선택해주세요")
-		}else {
-			frmMovie.method="post";
-			frmMovie.action="movieSeat.do"; //임시
-			frmMovie.submit(); //서블릿으로 전송
-		}
-	}
-
-	
-</script>
+      if (mvTitle.length == 0 || mvTitle == "") {
+        alert("영화를 선택해주세요")
+      } else if (showingDate.length == 0 || showingDate == "") {
+        alert("날짜를 선택해주세요")
+      } else if (theater.length == 0 || theater == "") {
+        alert("상영관을 선택해주세요")
+      } else if (showingTime.length == 0 || showingTime == "") {
+        alert("시간을 선택해주세요")
+      } else {
+        frmMovie.method = "post";
+        frmMovie.action = "movieSeat.do"; //임시
+        frmMovie.submit(); //서블릿으로 전송
+      }
+    }
+  </script>
 
   <!-- BOXICONE -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
   
+  <!-- LODASH CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+    integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+    crossorigin="anonymous"></script>
+  <!-- GSAP CDN (javascript로 애니매이션 효과)-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"
+    integrity="sha512-agNfXmEo6F+qcj3WGryaRvl9X9wLMQORbTt5ACS9YVqzKDMzhRxY+xjgO45HCLm61OwHWR1Oblp4QSw/SGh9SA=="
+    crossorigin="anonymous"></script>
+
+  <!-- SCROLL MAGIC CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"
+    integrity="sha512-8E3KZoPoZCD+1dgfqhPbejQBnQfBXe8FuwL4z/c8sTrgeDMFEnoyTlH3obB4/fV+6Sg0a0XF+L/6xS4Xx1fUEg=="
+    crossorigin="anonymous"></script>
   <!-- JSCODE -->
   <script src="${contextPath}/js/ticket.js" defer></script>
 </head>
+
 <body>
   <!-- HEADER -->
   <header>
@@ -113,18 +131,18 @@ function fn_ticket() {
 
 
           <div class="myCGV">
-              <c:choose>
-                <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
-                  <a href="${contextPath}/member/login.do">
-                </c:when>
-                <c:otherwise>
-                  <a href="${contextPath}/member/memberPage.do">
-                </c:otherwise>
-              </c:choose>
-              <i class='bx bx-user'></i>
-              <p>MY CGV</p>
-						</a>
-					</div>
+            <c:choose>
+              <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
+                <a href="${contextPath}/member/login.do">
+              </c:when>
+              <c:otherwise>
+                <a href="${contextPath}/member/memberPage.do">
+              </c:otherwise>
+            </c:choose>
+            <i class='bx bx-user'></i>
+            <p>MY CGV</p>
+            </a>
+          </div>
 
 
           <div class="QNA">
@@ -233,85 +251,110 @@ function fn_ticket() {
   </header>
 
 
-    <!-- 콘테이너 -->
-   
-	 	<div class="container">
-	      <div class="movie_tbl tbl_con">
-	        <span class="">영화선택</span>
-	        <ul>
-	          <li><a href="#">${mvInfoList[4].mvTitle}</a></li>
-	        </ul>
-	      </div>
-	      
-	      <div class="day_tbl tbl_con">
-	        <span class="">날짜선택</span>
-	        <ul class="movie1 day1">
-	          <li class="day1"><a href="#">${mvInfoList[0].showingDate}</a></li>
-	          <li class="day2"><a href="#">${mvInfoList[2].showingDate}</a></li>
-	          <li class="day3"><a href="#">${mvInfoList[4].showingDate}</a></li>
-	        </ul>
-	      </div>
-	
-	      <div class="screen_tbl tbl_con">
-	        <span class="">상영관선택</span>
-	        <ul class="movie1 day1 screen">
-	          <li class="screen1"><a href="#">${mvInfoList[0].theater}</a></li>
-	          <li class="screen2"><a href="#">${mvInfoList[2].theater}</a></li>
-	        </ul>
-	      </div>
-	
-	      <div class="time_tbl tbl_con">
-	        <span class="">시간선택</span>
-	        <ul class="movie1 day1 time1">
-	          <li><a href="#">${mvInfoList[0].showingTime}</a></li>
-	          <li><a href="#">${mvInfoList[3].showingTime}</a></li>
-	          <li><a href="#">${mvInfoList[5].showingTime}</a></li>
-	        </ul>
-	      </div>
-    	</div>
-	
-	    <div class="btn_con">
-	      <a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
-	      <a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
-	    </div>
-	  </div>
-	  
-	  <div class="goNext">
-	    <div class="inner">
-	      <div class="info">
-	        <div class="info movie">
-	          <span class="movie_poster">
-	            <!-- <img src="./image/001.jpg" alt="리멤버"> -->
-	          </span>
-	          <div class="row movie_title">
-	            <span></span>
-	          </div>
-	        </div>
-	        <div class="target info">
-	          <div class="row date">
-	            <span>일시</span>
-	            <span class="date"></span>
-	            <span class="time"></span>
-	          </div>
-	          <div class="row screen">
-	            <span>상영관</span>
-	            <span class="screen"></span>
-	          </div>
-	        </div>
-	        <div class="row colspan">
-	          <span class="path_step1">>좌석선택</span>
-	          <span class="path_step2">>결제</span>
-	        </div>
-	      </div>
-   	 </div>
- 	 </div>
- 	 
- 	   <form name="frmMovie">
-        <input type="hidden" name="mvTitle" id="movie_title">
-        <input type="hidden" name="theater" id="screen">
-        <input type="hidden" name="showingDate" id="date">
-        <input type="hidden" name="showingTime" id="time">
-        <input type="button" value="좌석선택" onclick="fn_ticket()">
-      </form>
+  <div>
+    <div class="inner">
+      <div class="container">
+        <div class="movie_tbl tbl_con">
+          <span class="">영화선택</span>
+          <ul>
+            <li><a href="#">${mvInfoList[4].mvTitle}</a></li>
+          </ul>
+        </div>
+
+        <div class="day_tbl tbl_con">
+          <span class="">날짜선택</span>
+          <ul class="movie1 day1">
+            <li class="day1"><a href="#">${mvInfoList[0].showingDate}</a></li>
+            <li class="day2"><a href="#">${mvInfoList[2].showingDate}</a></li>
+            <li class="day3"><a href="#">${mvInfoList[4].showingDate}</a></li>
+          </ul>
+        </div>
+
+        <div class="screen_tbl tbl_con">
+          <span class="">상영관선택</span>
+          <ul class="movie1 day1 screen">
+            <li class="screen1"><a href="#">${mvInfoList[0].theater}</a></li>
+            <li class="screen2"><a href="#">${mvInfoList[2].theater}</a></li>
+          </ul>
+        </div>
+
+        <div class="time_tbl tbl_con">
+          <span class="">시간선택</span>
+          <ul class="movie1 day1 time1">
+            <li><a href="#">${mvInfoList[0].showingTime}</a></li>
+            <li><a href="#">${mvInfoList[3].showingTime}</a></li>
+            <li><a href="#">${mvInfoList[5].showingTime}</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <div class="goNext">
+    <div class="inner">
+      <div class="info">
+        <div class="info movie">
+          <span class="movie_poster">
+            <!-- <img src="./image/001.jpg" alt="리멤버"> -->
+          </span>
+          <div class="row movie_title">
+            <span>${mvInfoList[4].mvTitle}</span>
+          </div>
+        </div>
+        <div class="target info">
+          <div class="row date">
+            <span>일시</span>
+            <span class="date"></span>
+            <span class="time"></span>
+          </div>
+          <div class="row screen">
+            <span>상영관</span>
+            <span class="screen"></span>
+          </div>
+        </div>
+        <div class="row colspan">
+          <span class="path_step1">>좌석선택</span>
+          <span class="path_step2">>결제</span>
+        </div>
+      </div>
+      <div class="btn_con">
+        <a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
+        <a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="policy_list">
+        <div class="inner">
+          <ul>
+            <li><a href="#">회사소개</a></li>
+            <li><a href="#">IR</a></li>
+            <li><a href="#">채용정보</a></li>
+            <li><a href="#">광고/제휴/출점문의</a></li>
+            <li><a href="#">이용약관</a></li>
+            <li><a href="#">편성기준</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">법적고지</a></li>
+            <li><a href="#">이메일주소무단수집거부</a></li>
+            <li><a href="#">윤리경영</a></li>
+            <li><a href="#">사이버감사실</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="company_info_wrap">
+        <div class="inner">
+          <div class="company_info">
+            <p>(04377)서울특별시 용산구 한강대로 23길 55, 아피카므로 6층(한강로동)</p>
+            <p>대표이사 : 오남석 · 사업자등록번호 : 123-45-678910 · 통신판매업신고번호 : 2017-서울용산-0662 <a href="#">사업자정보확인</a></p>
+            <p>호스팅사업자 : CJ올리브네트웍스 · 개인정보보호 책임자 : 심준범 · 대표이메일 : abcdefg@cj.net</p>
+            <p>ⓒ CJ CGV. All Rights Reserved</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 </body>
+
 </html>

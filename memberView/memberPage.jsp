@@ -54,18 +54,19 @@
 	    to bottom,
 	    rgba(255,255,255,0) 10%,
 	    rgba(255,255,255, 0.5) 25%,
-	    rgba(255,255,255,0.7) 40%,
-	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,0.7) 50%,
 	    rgba(255,255,255,1) 75%,
 	    rgba(255,255,255,1) 100%
 	  ),
-	  url(../img/cgvBG1.jpg);
+	  url(../img/cgvBG3.jpg);
 	  background-repeat: no-repeat;
 	  background-size: cover;
-	  weight:100%;
-	  height:50%;
-	  padding-top:200px;
+	  height:600px;
+	  padding-top:140px;
 	  z-index:-1;
+	}
+	.main_container {
+		background:rgba(255,255,255,.7);		
 	}
   </style>
 </head>
@@ -287,7 +288,8 @@
         <c:choose>
           <c:when test="${sessionScope.id !='admin'}">
             <div class="bookingList chk">
-              <p><a href="">예매내역 확인</a></p>
+	     	 <input type="hidden" name="_id" value="<%=session.getAttribute("id")%>">
+              <p><a href="${contextPath}/movie/ticketList.do?_id=<%=session.getAttribute("id")%>">예매내역 확인</a></p>
             </div>
           </c:when>
         </c:choose>

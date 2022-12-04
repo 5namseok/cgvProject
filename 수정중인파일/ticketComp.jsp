@@ -1,17 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%
+request.setCharacterEncoding("utf-8");
+String seatNum = request.getParameter("seatNum");	
+seatNum = seatNum.replaceAll(",$", ""); //seatNum에 저장된 마지막 콤마 제거
+
+//인원수 확인
+int count = 1; 
+for(int i=0; i<seatNum.length(); i++) {
+    if(seatNum.charAt(i) == ',') {
+        count++;                
+    }
+}
+%>
+    
 <!DOCTYPE html>
 <html>
-<html lang="eo">
 <head>
 <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
-  <link rel="stylesheet" href="${contextPath}/css/Q.css">
+  <link rel="stylesheet" href="${contextPath}/css/ticketComp.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -35,11 +50,17 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script>
-<title>공지사항 리스트</title>
+  <script src="${contextPath}/js/common.js" defer></script>
+  <script src="${contextPath}/js/members.js" defer></script>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+  <title>예매완료</title>
+<script type="text/javascript">
+
+</script>
 </head>
 <body>
-<!-- HEADER -->
+ <!-- HEADER -->
   <header>
     <div class="inner">
       <!-- logo & 이모티콘영역 -->
@@ -223,56 +244,40 @@
     </div>
   </header>
 
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="inner">
-      	<table width="700" border="1"  class="listTable">
-		<tr height="40" align="right">
-			<td colspan="5" class="td_title">
-				<p>공지사항
-				<c:if test="${sId eq 'admin'}">
-				<button onclick="location.href='NoticeCreateCon.do'">글쓰기</button>
-				</c:if>
-				</p>
-				
-				
-			</td>
-		</tr>
-		<tr height="40">
-			<td width="50" align="center">번호</td>
-			<td width="320" align="center">제목</td>
-			<td width="150" align="center">작성일</td>
-			<td width="80" align="center">조회수</td>
-		</tr>
-		<c:set var="number" value="${number}"/>
-		<c:forEach var="bean" items="${v}">
-		
-		<tr height="40">
-			<td width="50" align="center">${number}</td>
-			<td width="320" align="left"><a href='NoticeInfoCon.do?num=${bean.num}' class="subject">[${bean.num}] ${bean.subject}</a></td>
-			<td width="100" align="center">${bean.w_date}</td>
-			<td width="150" align="center">${bean.readcount}</td>
-		</tr>
-		<c:set var="number" value="${number-1}"/>
-		</c:forEach>
-	
-	</table>
-	<div class="paging">
-	<c:if test="${count>0}">
-		<c:if test="${blockStart > page}">
-			<a href="NoticeListCon.do?pageNum=${blockStart-page}" class="pagingBA">[이전]</a>
-		</c:if>
-		<c:forEach var="i" begin="${blockStart}" end="${blockEnd}">
-				<a href="NoticeListCon.do?pageNum=${i}" style ="text-decoration:none" class="pagingNum">[${i}]</a>
-		</c:forEach>
-		<c:if test="${blockEnd < pageCount}">
-			<a href="NoticeListCon.do?pageNum=${blockStart+page}" class="pagingBA" >[이후]</a>
-		</c:if>
-	</c:if>
-    </div>
-  </div>
 
-  <!-- FOOTER -->
+<div class="ticketWrap">
+    <h2>영화예매 내역</h2>
+    <div class="ticket">
+        <div class="ticketImg">
+            <img src="${contextPath}/img/${movieInfoVO.mvTitle}.jpg" alt="영화포스터">
+        </div>
+        <div class="main">
+            <p>예매번호:</p>  <span>${movieInfoVO.bookNum}</span><br>
+            <p>관람영화:</p> <span>${movieInfoVO.mvTitle}</span><br>
+            <p>관람일:</p> <span>${movieInfoVO.showingDate}</span><br>
+            <p>관람시간:</p> <span>${movieInfoVO.showingTime}</span><br>
+            <p>상영관:</p> <span>${movieInfoVO.theater}</span><br>
+            <p>관람인원:</p> <span><%=count%>명</span><br>
+            <p>관람좌석:</p> <span><%=seatNum%></span>
+        </div>
+    </div>
+
+    <div class="btn">
+       <button><a href="${contextPath}/">홈으로</a></button> 
+    </div>
+    <div class="line"></div>
+    <div class="note">
+        <div>예매 유의사항</div>
+        <div class="content">
+            <p>CJ ONE포인트는 상영일 익일 적립됩니다.(영화관람권 제외)</p>
+            <p>홈티켓 출력 시, 별도의 티켓발권 없이 바로입장 가능합니다.</p>
+            <p>영화상영 스케줄은 영화관 사정에 의해 변경될수 있습니다.</p>
+            <p>비회원 예매 하신경우는 예매내역이 이메일로 발송되지 않습니다.</p>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">
@@ -306,8 +311,5 @@
   <div id="to-top">
     <i class='bx bx-up-arrow-alt'></i>
   </div>
-
-	
-	
 </body>
 </html>

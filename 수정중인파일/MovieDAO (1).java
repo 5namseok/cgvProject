@@ -168,7 +168,6 @@ public class MovieDAO {
 			pstmt=conn.prepareStatement(query);
 			System.out.println(query);
 			pstmt.setString(1, _id);
-			System.out.println(_id);
 			ResultSet rs=pstmt.executeQuery();
 			rs.next();
 				String id=rs.getString("id");
@@ -189,5 +188,57 @@ public class MovieDAO {
 		return movieInfoVO;
 	}
 	
+	//예매내역 목록
+	public List<MovieInfoVO> listTicket(String _id) {
+		List<MovieInfoVO> ticketList = new ArrayList();
+		try {
+			conn = dataFactory.getConnection(); 
+			String query= "select * from ticketInfo where id=?";
+			System.out.println("movieDAO에서 쿼리확인"+query); 
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, _id);
+			ResultSet rs = pstmt.executeQuery(); 
+			while(rs.next()) { 
+				String id=rs.getString("id");
+				String mvTitle=rs.getString("mvTitle");
+				String theater=rs.getString("theater");
+				String showingDate=rs.getString("showingDate");
+				String showingTime=rs.getString("showingTime");
+				String seatNum=rs.getString("seatNum");
+				String bookNum=rs.getString("bookNum");
+				MovieInfoVO movieInfoVO = new MovieInfoVO(); 
+				movieInfoVO.setId(id);
+				movieInfoVO.setMvTitle(mvTitle);
+				movieInfoVO.setTheater(theater);
+				movieInfoVO.setShowingDate(showingDate);
+				movieInfoVO.setShowingTime(showingTime);
+				movieInfoVO.setSeatNum(seatNum);
+				movieInfoVO.setBookNum(bookNum);
+				ticketList.add(movieInfoVO);
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("예매내역 조회중 에러");
+		}
+		return ticketList;
+	}
+	
+	//예매취소
+	public void delTicket(String bookNum) {
+		try {
+			conn=dataFactory.getConnection();
+			String query="delete from ticketInfo where bookNum=?";
+			//System.out.println(query + id);
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, bookNum);
+			pstmt.executeUpdate();
+			pstmt.close();
+			conn.close();
+		} catch (Exception e) {
+			System.out.println("예매취소 중 에러");
+		}
+	}
 }		
 

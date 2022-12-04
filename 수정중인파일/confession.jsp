@@ -1,23 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myCGV</title>
-  <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>자백 영화정보</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script type="text/javascript" src="${contextPath}/teamproject/js/jquery-3.6.0.min.js"></script>
+    <!-- Slick -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="${contextPath}/teamproject/css/common.css"> 
+    <link rel="stylesheet" href="${contextPath}/teamproject/css/icommon.css">
+    <script src="${contextPath}/teamproject/js/movie.js"></script>
+    
+    <!-- CSS LINK -->
+  <link rel="stylesheet" href="${contextPath}/teamproject/css/icommon.css">
   <!--공통영역 CSS-->
-
-  <link rel="stylesheet" href="${contextPath}/css/memberPage.css">
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -40,21 +47,12 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
-  <script src="${contextPath}/js/members.js" defer></script>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  
-  <!-- contextPath 저장 -->
-  <script type="text/javascript" charset="utf-8">
-	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-  </script>
-  <title>QNA 게시판</title>
+  <script src="${contextPath}/teamproject/js/common.js" defer></script>
+    
 </head>
 <body>
-<!-- 로그인하지않았을 경우 접근불가, 로그인 페이지로 이동하게 만들기 // 쿠키나 세션? -->
-
- <!-- HEADER -->
- <header>
+<!-- HEADER -->
+<header>
   <div class="inner">
     <!-- logo & 이모티콘영역 -->
     <div class="top_area">
@@ -133,7 +131,7 @@
 
 
         <div class="QNA">
-          <a href="${contextPath}/csCon.do">
+          <a href="${contextPath}/NoticeListCon.do">
             <i class='bx bx-support'></i>
             <p>고객센터</p>
           </a>
@@ -237,38 +235,89 @@
   </div>
 </header>
 
+    <div class="mvWrap">
+        <div class="mvInfo">
+            <div class="img_box">
+                <img src="${contextPath}/teamproject/img/conf.jpg" alt="자백" >
+            </div>
+            <div class="con_box">
+                <div class="con_title">
+                    <h2>${movieList[1].mvTitle}</h2><!--DB생성 및 연결 후 mvtitle로 대체-->
+                    <span>현재상영중</span>
+                    <p>Confession</p>
+                </div> 
+                <div class="con_score">
+                    <p>예매율 16.0%</p> <!--필요여부?-->
+                </div> 
+                <div class="con_spec">
+                    <p>감독 : 윤종석 / 배우 : 소지섭, 김윤진, 나나, 최광일</p>
+                    <p>장르 : 스릴러 / 기본 : 15, ${movieList[1].runTime}, 한국</p>
+                    <p>개봉 : <fmt:formatDate value="${movieList[1].openDate}" pattern="yyyy.MM.dd"/></p> <!--DB생성 및 연결 후 opendate로 대체-->
+                </div> 
+                <div class="con_tiket">
+                    <a href="${contextPath}/movie/confessionTicket.do"><input type="button" value="예매하기"></a>
+                    
+                </div> 
+            </div>
+        </div>
+        <div class="detail">
+            <ul class="tap">
+                <li><a href="#mvContent">주요정보</a></li>
+                <li><a href="#trailer">트레일러</a></li>
+                <li><a href="#still">스틸컷</a></li>
+                <li><a href="#">평점/리뷰</a></li> <!--필요여부?-->
+                <li><a href="#">상영시간표</a></li>
+            </ul>
+            <div id="mvContent"> <!--DB생성 및 연결 후 mvcontent로 대체-->
+                <p>${movieList[1].mvContent}</p>
+            </div>
 
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="inner">
-	    <div class="main_container">
-	      <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
-	        <!-- name부분 추후 수정 -->
-	      <div class="modMember chk">
-	        <a href="${contextPath}/member/cfmPwdMod.do">회원정보 수정 / </a>
-          <a href="${contextPath}/member/cfmPwdDel.do">회원 탈퇴</a>
-	      </div> <!-- modMember -->
-	
-	      <div class="bookingList chk">
-	     	 <input type="hidden" name="_id" value="<%=session.getAttribute("id")%>">
-	        <p>
-	          <a href="${contextPath}/movie/ticketCheck.do?_id=<%=session.getAttribute("id")%>">MY 예매내역 확인</a>
-	        </p>
-	      </div>
-	
-	      <div class="QnA chk">
-	        <P><a href="${contextPath}/QNAListController.do">Q&A 확인</a></P>
-	      </div>
-	
-	    </div> <!-- //main_container -->
+            <div id="trailer">
+                <h3>트레일러</h3>
+                <div class="trailerBox">
+                    <div>
+                        <video src="${contextPath}/teamproject/img/conf_tr1.mp4" controls></video>
+                        <p>메인 예고편</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/teamproject/img/conf_tr2.mp4" controls></video>
+                        <p>스페셜 티저 예고편</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/teamproject/img/conf_tr3.mp4" controls></video>
+                        <p>캐릭터 진술 영상</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="still">
+                    <h3>스틸컷</h3>
+                
+                <div class="slide">
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut1.jpg" alt="스틸컷1">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut2.jpg" alt="스틸컷2">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut3.jpg" alt="스틸컷3">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut4.jpg" alt="스틸컷4">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut5.jpg" alt="스틸컷5">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/teamproject/img/conf_stillcut6.jpg" alt="스틸컷6">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
     
-  <main class="main_wrapper">
-
-  </main> <!-- //main_wrapper -->
-
-  <!-- FOOTER -->
+     <!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">

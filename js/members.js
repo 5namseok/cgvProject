@@ -1,5 +1,3 @@
-console.log('hello world');
-
 var contextPath = getContextPath();
 function getContextPath() {
 	return sessionStorage.getItem("contextpath");
@@ -71,8 +69,7 @@ function moveToLogin(obj) {
 //회원탈퇴(비밀번호체크) 페이지로 이동
 function moveToWithdrawal(obj) {
    console.log('hello')
-   
-   //obj.action = contextPath + "/memberView/cfmPwdDel.jsp"
-   //obj.submit();
+   obj.action = contextPath + "/memberView/cfmPwdDel.jsp"
+   obj.submit();
 }
 

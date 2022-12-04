@@ -237,7 +237,8 @@ function fn_ticket() {
     <!-- 콘테이너 -->
    
 	 	<div class="container">
-	      <div class="movie_tbl tbl_con">
+	   		<div class="inner">
+	   			<div class="movie_tbl tbl_con">
 	        <span class="">영화선택</span>
 	        <ul>
 	          <li><a href="#">${mvInfoList[0].mvTitle}</a></li>
@@ -269,13 +270,8 @@ function fn_ticket() {
 	          <li><a href="#">${mvInfoList[5].showingTime}</a></li>
 	        </ul>
 	      </div>
-    	</div>
-	
-	    <div class="btn_con">
-	      <a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
-	      <a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
+	   		</div> 
 	    </div>
-	  </div>
 	  
 	  <div class="goNext">
 	    <div class="inner">
@@ -304,6 +300,10 @@ function fn_ticket() {
 	          <span class="path_step2">>결제</span>
 	        </div>
 	      </div>
+	      <div class="btn_con">
+	      <a class="movieListBtn" href="${contextPath}/movieChart.jsp">영화리스트</a>
+	      <a class="movieSeatBtn"><input type="button" value=">좌석선택" onclick="fn_ticket()"></a>
+	    </div>
    	 </div>
  	 </div>
  	 

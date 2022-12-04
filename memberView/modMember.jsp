@@ -11,7 +11,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원정보 수정(TEST)</title>
+  <title>회원정보 수정</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
@@ -47,6 +47,27 @@
   <script type="text/javascript" charset="utf-8">
 	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
   </script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(../img/cgvBG3.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:650px;
+	  padding-top:100px;
+	  z-index:-1;
+	}
+	.mod_container {
+		background:rgba(255,255,255,.7);		
+	}
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -271,7 +292,7 @@
           <div class="btnModForm">
             <input type="submit" value="수정하기">
             <input type="button" value="회원탈퇴" onclick="moveToWithdrawal(this.form)">
-            <script>
+            <script type="text/javascript" charset="utf-8">
             function moveToWithdrawal(obj) {
             	   obj.action = contextPath + "/memberView/cfmPwdDel.jsp"
             	   obj.submit();
@@ -315,8 +336,5 @@
     </div>
   </footer>
 
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
 </body>
 </html>

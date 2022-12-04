@@ -1,23 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%
 	request.setCharacterEncoding("utf-8");
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myCGV</title>
-  <!-- CSS LINK -->
+<meta charset="UTF-8">
+    <title>리멤버 영화정보</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script type="text/javascript" src="${contextPath}/js/jquery-3.6.0.min.js"></script>
+    <!-- Slick -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css">
+    <link rel="stylesheet" href="${contextPath}/css/common.css"> 
+    <script src="${contextPath}/js/movie.js"></script>
+
+<!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
   <!--공통영역 CSS-->
-
-  <link rel="stylesheet" href="${contextPath}/css/memberPage.css">
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -41,19 +48,10 @@
 
   <!-- JAVA SCRIPT 연결 -->
   <script src="${contextPath}/js/common.js" defer></script>
-  <script src="${contextPath}/js/members.js" defer></script>
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  
-  <!-- contextPath 저장 -->
-  <script type="text/javascript" charset="utf-8">
-	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-  </script>
 </head>
 <body>
-<!-- 로그인하지않았을 경우 접근불가, 로그인 페이지로 이동하게 만들기 // 쿠키나 세션? -->
-
- <!-- HEADER -->
- <header>
+<!-- HEADER -->
+<header>
   <div class="inner">
     <!-- logo & 이모티콘영역 -->
     <div class="top_area">
@@ -236,56 +234,87 @@
   </div>
 </header>
 
-
-  <!-- CONTAINER -->
-  <div class="container">
-    <div class="inner">
-	    <div class="main_container">
-        <!-- ***수정됨-->
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-              <h2>관리자 페이지</h2>
-          </c:when>
-          <c:otherwise>
-            <h2><%=session.getAttribute("id")%>님 환영합니다.</h2>
-          </c:otherwise>
-        </c:choose>
-
-        <c:choose>
-          <c:when test="${sessionScope.id=='admin'}">
-            <div class="modMember chk">
-              <a href="${contextPath}/member/management.do">회원관리</a>
+    <div class="mvWrap">
+        <div class="mvInfo">
+            <div class="img_box">
+                <img src="${contextPath}/img/remember.jpg" alt="리멤버" >
             </div>
-          </c:when>
-          <c:otherwise>
-            <div class="modMember chk">
-              <a href="${contextPath}/member/cfmPwdMod.do">회원정보수정•회원탈퇴 </a>
+            <div class="con_box">
+                <div class="con_title">
+                    <h2>${movieList[0].mvTitle}</h2><!--DB생성 및 연결 후 mvtitle로 대체-->
+                    <span>현재상영중</span>
+                    <p>REMEMBER</p>
+                </div> 
+                <div class="con_score">
+                    <p>예매율 23.6%</p> <!--필요여부-->
+                </div> 
+                <div class="con_spec">
+                    <p>감독 : 이일형 / 배우 : 이성민, 남주혁</p> 
+                    <p>장르 : 드라마 / 기본 : 15, ${movieList[0].runTime}, 한국</p> <!--DB생성 및 연결 후 러닝타임 부분 runtime으로 대체-->
+                    <p>개봉 : <fmt:formatDate value="${movieList[0].openDate}" pattern="yyyy.MM.dd"/></p> <!--DB생성 및 연결 후 opendate로 대체-->
+                </div> 
+                <div class="con_tiket">
+                     <a href="${contextPath}/movie/rememberTicket.do"><input type="button" value="예매하기"></a>
+                </div> 
             </div>
-          </c:otherwise>
-        </c:choose>
-	
-        <c:choose>
-          <c:when test="${sessionScope.id !='admin'}">
-            <div class="bookingList chk">
-              <p><a href="">예매내역 확인</a></p>
+        </div>
+        <div class="detail">
+            <ul class="tap">
+                <li><a href="#mvContent">주요정보</a></li>
+                <li><a href="#trailer">트레일러</a></li>
+                <li><a href="#still">스틸컷</a></li>
+                <li><a href="#">평점/리뷰</a></li> <!--필요여부?-->
+                <li><a href="#">상영시간표</a></li>
+            </ul>
+            <div id="mvContent"> <!--DB생성 및 연결 후 mvcontent로 대체-->
+                <p>${movieList[0].mvContent}</p>
             </div>
-          </c:when>
-        </c:choose>
-        <!-- ***수정됨-->
 
-	      <div class="QnA chk">
-	        <P><a href="${contextPath}/QNAListController.do">Q&A 확인</a></P>
-	      </div>
-	
-	    </div> <!-- //main_container -->
+            <div id="trailer">
+                <h3>트레일러</h3>
+                <div class="trailerBox">
+                    <div>
+                        <video src="${contextPath}/img/remember_tr1.mp4" controls></video>
+                        <p>제작기 영상</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/img/remember_tr2.mp4" controls></video>
+                        <p>1차 예고편</p>
+                    </div>
+                    <div>
+                        <video src="${contextPath}/img/remember_tr3.mp4" controls></video>
+                        <p>2차 예고편</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="still">
+                    <h3>스틸컷</h3>
+                <div class="slide">
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut1.jpg" alt="스틸컷1">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut2.jpg" alt="스틸컷2">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut3.jpg" alt="스틸컷3">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut4.jpg" alt="스틸컷4">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut5.jpg" alt="스틸컷5">
+                    </div>
+                    <div class="slide_img">
+                        <img src="${contextPath}/img/remember_stillcut6.jpg" alt="스틸컷6">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
     
-  <main class="main_wrapper">
-
-  </main> <!-- //main_wrapper -->
-
-  <!-- FOOTER -->
+      <!-- FOOTER -->
   <footer>
     <div class="policy_list">
       <div class="inner">

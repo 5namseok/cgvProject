@@ -11,8 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.MemberDAO;
+import member.MemberVO;
 
 
 @WebServlet("/movie/*")
@@ -99,13 +101,26 @@ public class MovieController extends HttpServlet {
 			movieDAO.addTicket(movieInfoVO);
 			request.setAttribute("movieInfoVO", movieInfoVO);
 			nextPage="/ticketComp.jsp";
-			
+
 		}else if (action.equals("/ticketCheck.do")) {
 			String id = request.getParameter("_id");
-			System.out.println(id);
 			MovieInfoVO movieInfoVO = movieDAO.ticketChk(id);
 			request.setAttribute("movieInfoVO", movieInfoVO);
 			nextPage="/ticketCheck.jsp";
+			
+		}else if (action.equals("/ticketList.do")) {
+			String id = request.getParameter("_id");
+			String seatNum = request.getParameter("seatNum");
+			List<MovieInfoVO> ticketList = movieDAO.listTicket(id);
+			request.setAttribute("ticketList", ticketList);
+			nextPage="/ticketList.jsp";
+
+		
+		}else if(action.equals("/delTicket.do")){
+			String bookNum = request.getParameter("bookNum");
+			movieDAO.delTicket(bookNum);
+			out.print("<script>" + "alert('예매취소가 완료되었습니다.');" + "</script>" );
+			nextPage="/movie/ticketList.do";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

@@ -26,7 +26,7 @@ for(int i=0; i<seatNum.length(); i++) {
   <title>메인페이지</title>
   <!-- CSS LINK -->
   <link rel="stylesheet" href="${contextPath}/css/icommon.css">
-  <link rel="stylesheet" href="${contextPath}/css/ticketCheck.css">
+  <link rel="stylesheet" href="${contextPath}/css/ticketComp.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->

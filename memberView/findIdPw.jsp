@@ -40,7 +40,6 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="${contextPath}/js/findidpw.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -49,6 +48,24 @@
   <script type="text/javascript" charset="utf-8">
 	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
   </script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(../img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:100px;
+	  z-index:-1;
+	}
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -243,6 +260,19 @@
           <p class="find_id target"><a href="#findIdForm">아이디찾기</a></p>
           <p class="find_pw"><a href="#findPwForm">비밀번호찾기</a></p>
         </div>
+        <script>
+	    	let find_id=document.querySelector('.find_id');
+	    	let find_pw=document.querySelector('.find_pw');
+	    	
+	    	find_id.addEventListener('click',()=>{
+	    		find_id.classList.add('target');
+	    		find_pw.classList.remove('target');
+	    	})
+	    	find_pw.addEventListener('click',()=>{
+	    		find_pw.classList.add('target');
+	    		find_id.classList.remove('target');
+	    	})
+        </script>
         <form action="${contextPath}/member/findId.do" method="post" id="findIdForm" name="findIdForm"> <!--section-->
           <h2 class="findForm_title">아이디 찾기</h2>
           <table>
@@ -305,8 +335,5 @@
     </div>
   </footer>
 
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
 </body>
 </html>

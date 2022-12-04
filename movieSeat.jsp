@@ -11,6 +11,7 @@
 	String showingDate = request.getParameter("showingDate");
 	String showingTime = request.getParameter("showingTime");
 	String seatNum = request.getParameter("seatNum");
+    Object ID_get=session.getAttribute("id");
 %>
 
 
@@ -115,7 +116,7 @@ window.onload = function(){
             <c:otherwise>
               <div class="mem_join">
                 <%
-                  Object ID_get=session.getAttribute("id");
+                  //Object ID_get=session.getAttribute("id");
                 %>
                 <a href="#">
                   <p><%=ID_get %>님<br> 환영합니다</p>
@@ -365,9 +366,6 @@ window.onload = function(){
 
 
     <form action="ticketComp.do">
-    			<%
-                  Object ID_get=session.getAttribute("id");
-                %>
 	  <input type="hidden" name="id" id="id" value="<%=ID_get %>">
       <input type="hidden" name="mvTitle" id="movie_title" value="<%=mvTitle%>">
       <input type="hidden" name="theater" id="screen" value="<%=theater%>">
@@ -378,7 +376,6 @@ window.onload = function(){
       <input type="button" id="seat_btn" value="좌석선택">
     </form>
   </div>
-
   <!-- FOOTER -->
   <footer>
     <div class="policy_list">

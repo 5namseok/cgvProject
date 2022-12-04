@@ -40,7 +40,6 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   
@@ -48,6 +47,27 @@
   <script type="text/javascript" charset="utf-8">
 	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
   </script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(../img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:50px;
+	  z-index:-1;
+	}
+	.join_container {
+		background:rgba(255,255,255,.5);
+	}
+  </style>
 </head>
 <body>
   <!-- HEADER -->
@@ -318,8 +338,5 @@
     </div>
   </footer>
 
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
 </body>
 </html>

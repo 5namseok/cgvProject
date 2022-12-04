@@ -1,22 +1,61 @@
+<%@page import="javax.security.auth.message.callback.PrivateKeyCallback.Request"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="contextPath" value="${pageContext.request.contextPath }" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%
 	request.setCharacterEncoding("utf-8");
+	String mvTitle = request.getParameter("mvTitle");
+	String theater = request.getParameter("theater");
+	String showingDate = request.getParameter("showingDate");
+	String showingTime = request.getParameter("showingTime");
+	String seatNum = request.getParameter("seatNum");
+    Object ID_get=session.getAttribute("id");
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원탈퇴</title>
-  <!-- CSS LINK -->
-  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
-  <!--공통영역 CSS-->
 
-  <link rel="stylesheet" href="${contextPath}/css/cfmPwdDel.css">
+
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" defer>
+window.onload = function(){
+	let list = new Array();
+
+	<c:forEach var="seat" items="${seatInfo}" > //배열에 seatNum 배열값 추가하기
+		list.push("${seat.seatNum}"); 
+	</c:forEach>
+	let str = list.toString(); // 추가된 seatNum 배열을 합쳐 문자값으로 변환
+	console.log(str);
+
+	let checkSeat = str.split(','); // seatNum 배열을 ,로 구분하여 셋팅
+	let tbs = document.querySelectorAll('td'); 
+
+	console.log(checkSeat.length);
+  for(i=0; i<checkSeat.length; i++){
+    console.log(checkSeat[i])
+  }
+
+	for(let i=0; i<checkSeat.length; i++){ //예매된 좌석번호
+		for(let j=0; j<tbs.length; j++){ //전체 좌석번호
+			if(tbs[j].innerText == checkSeat[i]){ //전체 좌석번호와 예매된 좌석번호 가 맞을시 해당 좌석번호의 클래스 select로 변경
+				tbs[j].className='select';
+				console.log("예매된 좌석"+checkSeat[i]+"전체좌석"+tbs[j]+"맞음");
+			}else {
+				console.log("예매된 좌석"+checkSeat[i]+"전체좌석"+tbs[j]+"틀림");
+			}
+		}
+	}	
+}	
+</script>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>예매하기</title>
+<script type="text/javascript" src="${contextPath}/js/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="${contextPath}/css/movieSeat.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/ticket.css">
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -42,13 +81,12 @@
   <script src="${contextPath}/js/common.js" defer></script>
   <script src="${contextPath}/js/members.js" defer></script>
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  
-  <!-- contextPath 저장 -->
-  <script type="text/javascript" charset="utf-8">
-	sessionStorage.setItem("contextpath", "${pageContext.request.contextPath}");
-  </script>
+  <script src="${contextPath}/js/movieSeat.js" defer></script>
+
 </head>
+
 <body>
+
   <!-- HEADER -->
   <header>
     <div class="inner">
@@ -77,9 +115,7 @@
             </c:when>
             <c:otherwise>
               <div class="mem_join">
-                <%
-                  Object ID_get=session.getAttribute("id");
-                %>
+    
                 <a href="#">
                   <p><%=ID_get %>님<br> 환영합니다</p>
                 </a>
@@ -235,20 +271,108 @@
 
   <!-- CONTAINER -->
   <div class="container">
-    <div class="inner">
-	    <div class="main_container">
-	      <h3>회원탈퇴 전 아래 사항을 꼭 확인해주세요</h3>
-        <div class="alert">
-          <p class="p">‣ 회원 탈퇴를 신청하시면 즉시 회원의 모든 정보가 삭제됩니다.</p>
-          <p class="p">‣ QnA 게시판에 등록된 게시물은 탈퇴 후에도 삭제되지않습니다.<br> &nbsp&nbsp삭제를 원하시는 경우 반드시 직접 삭제 후 탈퇴를 신청해주시기<br> &nbsp&nbsp바랍니다.</p>
-        </div>
-	      <form action="${contextPath}/member/cfmPwdForm_del.do">
-	      	<input type="hidden" name="session_id" value="<%=session.getAttribute("id") %>">
-	        <!--<input type="password"  class="input" name="pw" placeholder="비밀번호를 입력해주세요">-->
-	        <input type="submit" class="btn_cfm" value="회원탈퇴">
-	      </form>
-	    </div> <!-- //main_container -->
+    <div class="book_info">
+      <div class="movie_info">
+        <span class="movie_title"><%=mvTitle%></span>
+      </div>
+      <div class="time_info">
+        <span>일시 : </span>
+        <span class="day"><%=showingDate%></span><br>
+        <span>시간 : </span>
+        <span class="time"><%=showingTime%></span>
+      </div>
     </div>
+    <div class="Count">
+      <span>인원수 선택</span>
+      <div class="Count_con">
+        <div class="adult">
+          <label for="AdultCount">성인</label>
+          <input type="number" name="AdultCount" id="AdultCount" max="3" min="0" value="0">
+        </div>
+        <div class="children">
+          <label for="childrenCount">어린이</label>
+          <input type="number" name="childrenCount" id="childrenCount" max="2" min="0" value="0">
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="seatTitle">
+      좌석선택  
+    </div>
+    
+    <table class="seat">
+      <th colspan="5"><span>스크린</span></th>
+      <tr>
+        <td class="null">A1</td>
+        <td class="null">A2</td>
+        <td class="null">A3</td>
+        <td class="null">A4</td>
+        <td class="null">A5</td>
+      </tr>
+      <tr>
+        <td class="null">B1</td>
+        <td class="null">B2</td>
+        <td class="null">B3</td>
+        <td class="null">B4</td>
+        <td class="null">B5</td>
+      </tr>
+      <tr>
+        <td class="null">C1</td>
+        <td class="null">C2</td>
+        <td class="null">C3</td>
+        <td class="null">C4</td>
+        <td class="null">C5</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="btn_con">
+    <div class="pageMoveBtn"><a href="${contextPath}/movie/movieChart.do">영화리스트</a></div>
+    <div class="pageMoveBtn payment">결제하기</div>
+  </div>
+
+</div>
+
+<div class="goNext">
+  <div class="inner">
+    <div class="info">
+      <div class="info movie">
+        <span class="movie_poster">
+          <!-- <img src="./image/001.jpg" alt="리멤버"> -->
+        </span>
+        <div class="row movie_title">
+          <span><%=mvTitle%></span>
+        </div>
+      </div>
+      <div class="target info">
+        <div class="row date">
+          <span>일시</span>
+          <span class="date"><%=showingDate%></span>
+          <span class="time"><%=showingTime%></span>
+        </div>
+        <div class="row screen">
+          <span><%=theater%></span>
+          <span class="screen"></span>
+        </div>
+      </div>
+      <div class="row colspan">
+        <span class="path_step1">>좌석선택</span>
+        <span class="path_step2">>결제</span>
+      </div>
+    </div>
+
+
+    <form action="ticketComp.do">
+	  <input type="hidden" name="id" id="id" value="<%=ID_get %>">
+      <input type="hidden" name="mvTitle" id="movie_title" value="<%=mvTitle%>">
+      <input type="hidden" name="theater" id="screen" value="<%=theater%>">
+      <input type="hidden" name="showingDate" id="date" value="<%=showingDate%>">
+      <input type="hidden" name="showingTime" id="time" value="<%=showingTime%>">
+      <input type="hidden" name="seatNum" id="seatNum">
+      <input type="hidden" name="bookNum" id="bookNum">
+      <input type="button" id="seat_btn" value="좌석선택">
+    </form>
   </div>
 
   <!-- FOOTER -->
@@ -285,5 +409,11 @@
   <div id="to-top">
     <i class='bx bx-up-arrow-alt'></i>
   </div>
+  
+</body>
+</html>
+</head>
+<body>
+
 </body>
 </html>
