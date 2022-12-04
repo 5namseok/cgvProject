@@ -34,7 +34,26 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script>
+  <script src="${contextPath}/js/common.js" defer></script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(./img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:20px;
+	  z-index:-1;
+	}
+  </style>
 <title>공지사항 리스트</title>
 </head>
 <body>
@@ -225,6 +244,7 @@
   <!-- CONTAINER -->
   <div class="container">
     <div class="inner">
+    
       	<table width="700" border="1"  class="listTable">
 		<tr height="40" align="right">
 			<td colspan="5" class="td_title">
@@ -239,7 +259,7 @@
 		</tr>
 		<tr height="40">
 			<td width="50" align="center">번호</td>
-			<td width="320" align="center">제목</td>
+			<td width="500" align="center">제목</td>
 			<td width="150" align="center">작성일</td>
 			<td width="80" align="center">조회수</td>
 		</tr>
@@ -248,7 +268,7 @@
 		
 		<tr height="40">
 			<td width="50" align="center">${number}</td>
-			<td width="320" align="left"><a href='NoticeInfoCon.do?num=${bean.num}' class="subject">[${bean.num}] ${bean.subject}</a></td>
+			<td width="500" align="left"><a href='NoticeInfoCon.do?num=${bean.num}' class="subject"><!-- [${bean.num}] --> ${bean.subject}</a></td>
 			<td width="100" align="center">${bean.w_date}</td>
 			<td width="150" align="center">${bean.readcount}</td>
 		</tr>

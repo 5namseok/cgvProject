@@ -37,7 +37,8 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script><style type="text/css">
+  <script src="./js/common.js" defer></script>
+  <style type="text/css">
   	.container{
 	  background: linear-gradient(
 	    to bottom,
@@ -52,7 +53,7 @@
 	  background-repeat: no-repeat;
 	  background-size: cover;
 	  height:600px;
-	  padding-top:200px;
+	  padding-top:100px;
 	  z-index:-1;
 	}
   </style>
@@ -253,7 +254,7 @@
         <div class="fItem" id="leftBar">
             <ul>
               <li>
-                <a href="#">고객센터 메인</a>
+                <a href="${contextPath}/csCon.do">고객센터 메인</a>
               </li>
               <li>
                 <a href="${contextPath}/NoticeListCon.do">공지사항</a>

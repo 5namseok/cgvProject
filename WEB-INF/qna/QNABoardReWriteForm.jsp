@@ -36,6 +36,26 @@
 
   <!-- JAVA SCRIPT 연결 -->
   <script src="${ctx}/js/common.js" defer></script>
+    <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(./img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:20px;
+	  z-index:-1;
+	}
+  </style>
+  
 </head>
 <body>
 	<!-- HEADER -->
@@ -45,9 +65,9 @@
       <div class="top_area">
         <div class="logo_con">
           <div class="logo_image">
-            <a href="${contextPath}/">
-              <img src="${contextPath}/img/logoRed.png" alt="CGV" class="logo logo_red">
-              <img src="${contextPath}/img/logoWhite.png" alt="CGV" class="logo logo_white">
+            <a href="${ctx}/">
+              <img src="${ctx}/img/logoRed.png" alt="CGV" class="logo logo_red">
+              <img src="${ctx}/img/logoWhite.png" alt="CGV" class="logo logo_white">
             </a>
           </div>
           <div class="logo_text">
@@ -58,7 +78,7 @@
           <c:choose>
             <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
               <div class="mem_join">
-                <a href="${contextPath}/member/join.do">
+                <a href="${ctx}/member/join.do">
                   <i class='bx bx-user-plus'></i>
                   <p>회원가입</p> <!--  -->
                 </a>
@@ -82,7 +102,7 @@
             <c:choose>
               <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
                 <div class="login">
-                  <a href="${contextPath}/member/login.do">
+                  <a href="${ctx}/member/login.do">
                     <i class='bx bx-log-in-circle'></i>
                     <p>로그인</p>
                   </a>
@@ -90,7 +110,7 @@
               </c:when>
               <c:otherwise>
                 <div class="logout">
-                  <a href="${contextPath}/member/logout.do">
+                  <a href="${ctx}/member/logout.do">
                     <i class='bx bx-log-out-circle'></i>
                     <p>로그아웃</p>
                   </a>
@@ -105,10 +125,10 @@
           <div class="myCGV">
               <c:choose>
                 <c:when test="${sessionScope.id==null ||  sessionScope.id==''}">
-                  <a href="${contextPath}/member/login.do">
+                  <a href="${ctx}/member/login.do">
                 </c:when>
                 <c:otherwise>
-                  <a href="${contextPath}/member/memberPage.do">
+                  <a href="${ctx}/member/memberPage.do">
                 </c:otherwise>
               </c:choose>
               <i class='bx bx-user'></i>
@@ -118,7 +138,7 @@
 
 
           <div class="QNA">
-            <a href="${contextPath}/csCon.do">
+            <a href="${ctx}/csCon.do">
               <i class='bx bx-support'></i>
               <p>고객센터</p>
             </a>
@@ -137,7 +157,7 @@
               <li>
                 <h3>영화</h3>
               </li>
-              <li><a href="${contextPath}/movie/movieChart.do">무비차트</a></li>
+              <li><a href="${ctx}/movie/movieChart.do">무비차트</a></li>
               <li><a href="#">아트하우스</a></li>
               <li><a href="#">ICECON</a></li>
             </ul>
@@ -160,7 +180,7 @@
               <li>
                 <h3>예매</h3>
               </li>
-              <li><a href="${contextPath}/movie/ticket.do">빠른예매</a></li>
+              <li><a href="${ctx}/movie/ticket.do">빠른예매</a></li>
               <li><a href="#">상영스케줄</a></li>
               <li><a href="#">English Ticketing</a></li>
               <li><a href="#">English Scedule</a></li>
@@ -290,10 +310,6 @@
       </div>
     </div>
   </footer>
-
-  <div id="to-top">
-    <i class='bx bx-up-arrow-alt'></i>
-  </div>
 	
 </body>
 </html>

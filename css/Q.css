@@ -5,6 +5,23 @@
     box-sizing: border-box;
 }
 
+.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(./img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:20px;
+	  z-index:-1;
+	}
 
 
 
@@ -14,10 +31,11 @@
     margin-top: 10%;
     border-collapse: collapse;
     border-color: #000;
-    
 }
 
-
+.listTable tr:nth-child(n+3) td{
+  	background-color: rgba(242, 240, 229, .8);
+}
 
 .listTable tr td:first-child,  .listTable tr:nth-child(2){
     background-color: #fb4357;
@@ -88,6 +106,17 @@
     font-weight: bolder;
 }
 
+.Qtable tr td:nth-child(2),
+.Qtable tr td:nth-child(4){	
+  	background-color: rgba(242, 240, 229, .8);
+}
+
+.Qtable tr td:nth-child(3){
+    background-color: #fb4357;	
+    color: #fff;
+    font-weight: bolder;
+}
+
 .Qtable .clickBox {
     background-color: #fff;
     border-color: #000;
@@ -95,9 +124,16 @@
     padding: 3px;
     font-weight: bolder;
 }
+.Qtable .text_info {
+	text-align:start;
+	padding:10px;
+}
+
 
 .Qtable input, .Qtable textarea{
     padding: 1%;
     margin: 1%;
+    border:none;
+    background:none;
 }
 

@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>메인페이지</title>
   <!-- CSS LINK -->
-  <link rel="stylesheet" href="./css/icommon.css">
-  <link rel="stylesheet" href="./css/Q.css">
+  <link rel="stylesheet" href="${contextPath}/css/icommon.css">
+  <link rel="stylesheet" href="${contextPath}/css/Q.css">
   <!--공통영역 CSS-->
 
   <!-- BOXICONE https://boxicons.com/ 사이트에서 이모티콘 가져올 수 있음-->
@@ -35,8 +34,27 @@
     crossorigin="anonymous"></script>
 
   <!-- JAVA SCRIPT 연결 -->
-  <script src="./js/common.js" defer></script>
-<title>Insert title here</title>
+  <script src="${contextPath}/js/common.js" defer></script>
+  <style type="text/css">
+  	.container{
+	  background: linear-gradient(
+	    to bottom,
+	    rgba(255,255,255,0) 10%,
+	    rgba(255,255,255, 0.5) 25%,
+	    rgba(255,255,255,0.7) 40%,
+	    rgba(255,255,255,1) 50%,
+	    rgba(255,255,255,1) 75%,
+	    rgba(255,255,255,1) 100%
+	  ),
+	  url(./img/cgvBG1.jpg);
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  height:600px;
+	  padding-top:20px;
+	  z-index:-1;
+	}
+  </style>
+<title>notice Create</title>
 </head>
 <body>
 <!-- HEADER -->

@@ -12,6 +12,9 @@
     justify-content: space-between;
     margin: 3%;
     padding: 1%;
+  	background-color: rgba(242, 240, 229, .8);
+  	border-radius: 10px;
+  	box-shadow: 4px 4px 10px rgba(0, 0, 0, .15);
     
     
 }
@@ -33,9 +36,10 @@
     margin: 10% auto;
     width: 95%;
     border-radius: 20px;
-    
     font-weight: bolder;
     padding:  5px;
+  	box-shadow: 4px 4px 10px rgba(0, 0, 0, .8);
+    
 }
 #leftBar ul li a {
     width: 100%;
@@ -46,8 +50,6 @@
 /*공지사항, q&a*/
 .fItem:nth-child(2), .fItem:nth-child(3) {
     flex-grow: 3;
-    border-style: solid;
-    border-color: black;
     border-radius: 10px;
 }
 
@@ -64,6 +66,7 @@
     padding: 10px 0;
     background-color: #fb4357;
     border-radius: 30px;
+  	box-shadow: 4px 4px 10px rgba(0, 0, 0, .8);
 }
 .fItem:nth-child(2) table caption a, .fItem:nth-child(3) table caption a {
     color: #fff;
@@ -78,7 +81,9 @@
 }
 .fItem:nth-child(2) table tr td, .fItem:nth-child(3) table tr td {
     background-color: white;
-    border-bottom: 3px solid #fb4357;
+    
+    border-radius : 5px;
+  	box-shadow: 4px 4px 5px #fb4357;
     
     
 }
